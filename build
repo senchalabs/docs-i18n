@@ -1,0 +1,3 @@
+#!/bin/sh
+
+guider guides/ --index=guides.json --title="Touch 2.0.0 Guides" --link-url=http://docs.sencha.com/touch/2-0/
