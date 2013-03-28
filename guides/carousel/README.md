@@ -1,14 +1,11 @@
-# Using Carousels in Sencha Touch 2
+# Using Carousels in Sencha Touch
 
-{@link Ext.carousel.Carousel Carousels}, like [tabs](#!/guide/tabs), are a great way to allow the user to swipe through multiple full-screen pages.
-A Carousel shows only one of its pages at a time but allows you to swipe through with your finger. You can think of a
-Carousel as a single active item with the rest of the items stretching away left and right. Indicator dots show you how
-many available screens there are to swipe through:
+{@link Ext.carousel.Carousel Carousels}, like [tabs](#!/guide/tabs), are a great way to allow users to swipe through multiple full screen pages.
+A Carousel shows only one of its pages at a time, but allows you to browse through other pages using a swipe gesture. You can think of a Carousel as a single active item, with the rest of the items stretching away left and right. Indicator dots indicate how many available screens are available to swipe through, as shown in the following image:
 
 {@img carousel.jpg}
 
-Carousels can be oriented either horizontally or vertically and are easy to configure - they just work like any other
-Container. Here's how to set up a simple horizontal Carousel:
+Carousels can be oriented either horizontally or vertically and are easy to configure - they just work like any other Container component. The following code sample shows how to set up a simple horizontal Carousel:
 
     @example preview
     Ext.create('Ext.Carousel', {
@@ -33,9 +30,7 @@ Container. Here's how to set up a simple horizontal Carousel:
         ]
     });
 
-Swiping your finger left and right over the carousel now swaps between the two items we defined above. It also updates
-the indicator icon to let you know which page you're currently on. We can also make Carousels orient themselves
-vertically:
+Swiping your finger left and right over the carousel swaps between the two items defined above. It also updates the indicator icon to let you know which page you are currently on. We can also make Carousels orient themselves vertically, as shown in the following code sample:
 
     @example preview
     Ext.create('Ext.Carousel', {
@@ -58,7 +53,7 @@ vertically:
         ]
     });
 
-You can put anything in a Carousel, for example here we place a list and a form into a horizontal carousel
+You can place any component into a Carousel, for example the following code places a list and a form into a horizontal carousel:
 
     @example portrait preview
     Ext.create('Ext.Carousel', {

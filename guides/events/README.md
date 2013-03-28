@@ -1,10 +1,10 @@
-# Understanding and Using Events in Sencha Touch 2
+# Understanding and Using Events in Sencha Touch
 
-The Components and classes of Sencha Touch 2 fire a broad range of events at various points in their lifecycle. Events allow your code to react to changes around it and are a key concept within Sencha Touch.
+The Components and classes of Sencha Touch fire a broad range of events at various points in their lifecycle. Events allow your code to react to changes around it and are a key concept within Sencha Touch.
 
 ## What Are Events?
 
-Events are fired whenever something interesting happens to one of your classes. For example, when any Component is rendered to the screen its {@link Ext.Component#event-painted painted} event is fired. We can listen for that event by configuring a simple {@link Ext.mixin.Observable#listeners listeners} config:
+Events are fired whenever something interesting happens to one of your classes. For example, when any Component is rendered to the screen, its {@link Ext.Component#event-painted painted} event is fired. We can listen for that event by configuring a simple {@link Ext.mixin.Observable#listeners listeners} config:
 
     @example
     Ext.create('Ext.Panel', {
@@ -18,13 +18,13 @@ Events are fired whenever something interesting happens to one of your classes. 
         }
     });
 
-When you click the "Live Preview" button above you'll see the Panel rendered to the screen followed by our alert message. All of the events fired by a class are listed in its API page - for example Ext.Panel has 28 events at the time of writing:
+When you click the "Live Preview" button above, you will see a Panel rendered to the screen, followed by the defined alert message. All events fired by a class are listed in its API page - for example at the time of writing Ext.Panel has 28 events:
 
 <a href="#!/api/Ext.Panel">{@img event-list.png Hover over the Events button to quickly see which events are available}</a>
 
 ## Listening to Events
 
-The painted event itself is useful in some cases but there are other events that you're much more likely to use. For example, {@link Ext.Button Buttons} fire {@link Ext.Button#event-tap tap} events whenever they're tapped on:
+Although the painted event itself is useful in some cases, there are other events that you are much more likely to use. For example, {@link Ext.Button Buttons} fire {@link Ext.Button#event-tap tap} events whenever they are tapped on:
 
     @example
     Ext.Viewport.add({
@@ -39,7 +39,7 @@ The painted event itself is useful in some cases but there are other events that
         }
     });
 
-We can add as many event listeners as we like. Here we're going to confound our user by calling *this.hide()* inside our tap listener to hide the Button, only to show it again a second later. When *this.hide()* is called, the Button is hidden and the {@link Ext.Button#event-hide hide event} fired. The hide event in turn triggers our hide listener, which waits a second then shows the Button again:
+You can add as many event listeners as you like. In the following example we are going to confound users by calling *this.hide()* inside our tap listener to hide the Button, only to show it again a second later. When *this.hide()* is called, the Button is hidden and the {@link Ext.Button#event-hide hide event} fired. The hide event in turn triggers our hide listener, which waits for a second before it shows the Button again:
 
     @example
     Ext.Viewport.add({
@@ -62,11 +62,11 @@ We can add as many event listeners as we like. Here we're going to confound our 
 
 Event listeners are called every time an event is fired, so you can continue hiding and showing the button for all eternity.
 
-## Config-driven events
+## Config-driven Events
 
-Most classes are reconfigurable at run time - e.g. you can change configurations like their height, width or content at any time and the Component will correctly update itself on screen. Many of these configuration changes trigger an event to be fired - for example 14 of Button's 24 events have names like {@link Ext.Button#event-widthchange widthchange}, {@link Ext.Button#event-hiddenchange hiddenchange} and {@link Ext.Button#event-centeredchange centeredchange}.
+Most classes are reconfigurable at run time, meaning that you can change their configurations such as height, width, or content at any time and the Component will correctly update itself on screen. Many of these configuration changes trigger the firing of an event - for example 14 of the Button's component 24 events have names such as {@link Ext.Button#event-widthchange widthchange}, {@link Ext.Button#event-hiddenchange hiddenchange} and {@link Ext.Button#event-centeredchange centeredchange}.
 
-This time our tap handler is just going to call this.setWidth() to set a random width on our button. Our {@link Ext.Button#event-widthchange widthchange} listener will immediately be informed of the change, along with the new and old width values:
+In the following example the tap handler calls this.setWidth() to set a random width on our button. The {@link Ext.Button#event-widthchange widthchange} listener is informed immediately of the change, along with the new and old width values:
 
     @example
     Ext.Viewport.add({
@@ -86,11 +86,11 @@ This time our tap handler is just going to call this.setWidth() to set a random 
         }
     });
 
-Every event that ends in 'change' is fired as a result of a config option changing. Note that you listen to these events just like any other, it's just good to know the convention.
+Every event that ends in 'change' is fired as a result of a config option that has changed. Note that although listening to these events is like listening to any other events, it is useful to know the convention.
 
 ## Adding Listeners Later
 
-Every example so far has involved passing listeners in when the class is instantiated. If we already have an instance though, we can still add listeners later using the {@link Ext.mixin.Observable#on on} function:
+Previous examples involved passing listeners in when the class is instantiated. If we already have an instance though, we can still add listeners later on using the {@link Ext.mixin.Observable#on on} function:
 
     @example
     var myButton = Ext.Viewport.add({
@@ -103,7 +103,7 @@ Every example so far has involved passing listeners in when the class is instant
         alert("Event listener attached by .on");
     });
 
-You can add new listeners at any time this way. We can also combine these approaches, even listening to the same event more than once if we need to:
+In this way you can add new listeners at any time. You can also combine these approaches, and you can even listen to the same event more than once, if you need to, as shown in the following example:
 
     @example
     var myButton = Ext.Viewport.add({
@@ -122,9 +122,9 @@ You can add new listeners at any time this way. We can also combine these approa
         alert("Second tap listener");
     });
 
-Both of your event listener functions are called, preserving the order they were added in.
+In this case, both defined event listener functions are called, preserving the order they were added in.
 
-Finally, we can specify multiple listeners using .on, just as we could with a listener configuration. Here's our random width setting button again:
+Finally, you can specify multiple listeners by using the .on method, similar to using a listener configuration. The following code revisits the previous example that was setting the button's random width:
 
     @example
     var myButton = Ext.Viewport.add({
@@ -146,9 +146,9 @@ Finally, we can specify multiple listeners using .on, just as we could with a li
 
 ## Removing Listeners
 
-Just as we can add listeners at any time, we can remove them too, this time using {@link Ext.mixin.Observable#un un}. In order to remove a listener, we need a reference to its function. In all of the examples above we've just passed a function straight into the listeners object or .on call, this time we're going to create the function a little earlier and link it into a variable called *doSomething*.
+Just as we can add listeners at any time, we can remove them too, this time using {@link Ext.mixin.Observable#un un}. In order to remove a listener, we need a reference to its function. In the previous examples we have just passed a function into the listeners object or the .on call, this time we create the function earlier and link it into a variable called *doSomething*.
 
-We'll pass our new *doSomething* function into our listeners object, which works just like before. This time however we'll add an Ext.defer function at the bottom that removes the listener again after 3 seconds. Clicking on the button in the first 3 seconds yields an alert message, after 3 seconds our listener is removed so nothing happens:
+Since initially we pass the new *doSomething* function into our listeners object, at first the code works like before. Since we eventually add an Ext.defer function that removes the listener after 3 seconds, clicking on the button in the first 3 seconds yields an alert message, after 3 seconds however the listener is removed so nothing happens:
 
     @example
     var doSomething = function() {
@@ -170,7 +170,7 @@ We'll pass our new *doSomething* function into our listeners object, which works
     }, 3000);
 
 
-In this example we're adding a button like before, but this time also adding a toggle button that will add and remove the tap listener as you toggle it. The listener starts off disabled, use the toggle button to enable and later disable it:
+In the following example we use a button like in previous code samples, but this time we also add a toggle button that adds and removes the tap listener as you toggle it. The listener starts by being disabled, using the toggle button enables and then disables it:
 
     @example
     var myButton = Ext.Viewport.add({
@@ -203,13 +203,13 @@ In this example we're adding a button like before, but this time also adding a t
 
 ## Listener Options
 
-There are a few additional options that we can pass into listeners.
+There are a number of additional options that you can pass into listeners.
 
 ### Scope
 
-Scope sets the value of *this* inside your handler function. By default *this* is set to the instance of the class firing the event, which is often (but not always) what you want. That's what allowed us to call *this.hide()* to hide the button in the second example near the start of this guide.
+Scope sets the value of *this* inside your handler function. By default *this* is set to the instance of the class firing the event, which is often (but not always) the functionality that you want. This functionality allowed us to call *this.hide()* to hide the button in the second example at the start of this guide.
 
-This time we'll create a Button and a Panel, then listen to the Button's 'tap' event with our handler running in Panel's scope. To do this we need to pass in an object instead of a handler function - this object contains the function plus the scope:
+In the following example we create a Button and a Panel, then listen to the Button's 'tap' event with the handler running in Panel's scope. In order to do this we need to pass in an object instead of a handler function - this object contains the function plus the scope:
 
     @example
     var myButton = Ext.Viewport.add({
@@ -232,11 +232,11 @@ This time we'll create a Button and a Panel, then listen to the Button's 'tap' e
         }
     });
 
-When you run this example, the value of *this* in the tap handler is the Panel. To see this we'd set the Panel's {@link Ext.Panel#cfg-html html} configuration to 'Panel HTML' and then alerted this.getHtml() in our handler. When we tap the button we do indeed see the Panel's html being alerted.
+When you run this example, the value of *this* in the tap handler is the Panel. To see this we have set the Panel's {@link Ext.Panel#cfg-html html} configuration to 'Panel HTML' and then alerted this.getHtml() in our handler. When  the button is tapped we do indeed see the Panel's html being alerted.
 
 ### Single
 
-Sometimes we only want to listen to an event one time. The event itself might fire any number of times, but we only want to listen to it once. This is simple:
+Sometimes we only want to listen to an event one time. The event itself might fire any number of times, but we only want to listen to it once. The following codes illustrates this situation:
 
     @example
     var myButton = Ext.Viewport.add({
@@ -256,7 +256,7 @@ Sometimes we only want to listen to an event one time. The event itself might fi
 
 ### Buffer
 
-For events that are fired many times in short succession, we can throttle the number of times our listener is called by using the buffer configuration. In this case our button's tap listener will only be invoked once every 2 seconds, regardless of how many times you click it:
+For events that are fired many times in short succession, we can reduce the number of times our listener is called by using the buffer configuration. In this case our button's tap listener is only invoked once every 2 seconds, regardless of how many times you click it:
 
     @example
     var myButton = Ext.Viewport.add({
@@ -276,7 +276,7 @@ For events that are fired many times in short succession, we can throttle the nu
 
 ## Firing Your Own Events
 
-Firing your own events is really simple - you can just call {@link Ext.mixin.Observable#fireEvent fireEvent} with any event name. In this case we'll fire an event called *myEvent* that passes two arguments - the button itself an a number between 1 and 100:
+Firing your own events is done by calling {@link Ext.mixin.Observable#fireEvent fireEvent} with any event name. In the following example we fire an event called *myEvent* that passes two arguments - the button itself and a random number between 1 and 100:
 
     @example
     var myButton = Ext.Viewport.add({
@@ -297,11 +297,11 @@ Firing your own events is really simple - you can just call {@link Ext.mixin.Obs
         myButton.fireEvent('myEvent', myButton, number);
     }, 2000);
 
-Once again we used Ext.defer to delay the function that fires our custom event, this time by 2 seconds. When the event is fired, our myEvent listener picks up on it and alerts the arguments we passed in.
+Once again we used Ext.defer to delay the function that fires our custom event, this time by 2 seconds. When the event is fired, the myEvent listener picks up on it and displays the arguments we passed in.
 
 ## Conclusions
 
-Events are a key part of Sencha Touch 2 and keep your app informed of changes in the system. If you're new to Sencha Touch we suggest checking out these guides to get a better grounding in how everything works:
+Events are a key part of Sencha Touch and keep your app informed of changes in the system. If you are new to Sencha Touch we suggest reading the following guides to get a better understanding of how everything works:
 
 * <a href="#!/guide/components">Understanding Components</a>
 * <a href="#!/guide/class_system">Understanding the Class System</a>

@@ -1,8 +1,8 @@
-# Using Navigation View in Sencha Touch 2
+# Using Navigation View in Sencha Touch
 
-Navigation View is a new component in Sencha Touch 2. At its base, it is a simple container with a card layout and a docked toolbar; however we built on top of that a easy way to push (add) and pop (remove) views in stack-like fashion. When you push a view, it will add that view into the `stack` and animate the new title into the toolbar. It will also animate a back button into the toolbar so you can return (or pop) to the previous view.
+Navigation View is a new component in Sencha Touch. At its base, it is a simple container with a card layout and a docked toolbar; however on top of that we built an easy way to push (add) and pop (remove) views in a stack-like manner. When you push a view, it adds that view into the `stack` and animates the new title into the toolbar. It  also animates a back button into the toolbar, so you can return (or pop) to the previous view.
 
-The easiest way to demonstrate this is with an example:
+The following example demonstrates this functionality:
 
     @example preview
     //create the navigation view and add it into the Ext.Viewport
@@ -47,9 +47,9 @@ The easiest way to demonstrate this is with an example:
         ]
     });
 
-## Creating a simple Navigation View
+## Creating a Simple Navigation View
 
-Creating a Navigation View is just like creating other containers. You use {@link Ext.ClassManager#create} to create your Navigation View instance, and the only configuration you need to add is {@link Ext.navigation.View#cfg-items items}.
+Creating a Navigation View is similar to creating other containers. You use {@link Ext.ClassManager#create} to create your Navigation View instance, and the only configuration you need to add is {@link Ext.navigation.View#cfg-items items}.
 
     @example
     var view = Ext.create('Ext.navigation.View', {
@@ -62,29 +62,29 @@ Creating a Navigation View is just like creating other containers. You use {@lin
         ]
     });
 
-As you can see, we only give it two configurations:
+In this example, we give the Navigation View the following two configurations:
 
-* **{@link Ext.navigation.View#cfg-fullscreen fullscreen}**: This is so it is automatically inserted into the {@link Ext.Viewport viewport}.
-* **{@link Ext.navigation.View#cfg-items items}**: This is the items that the navigaiton view will contain by default. We only insert one item here, which means it will the first item in the `stack`; therefore active.
-    * **title**: This is the title that will be displayed navigation bar (not required).
-    * **{@link Ext.Container#html html}**: We use the `html` configuration here just so our first item has some dummy content.
+* **{@link Ext.navigation.View#cfg-fullscreen fullscreen}**: This ensures that it is automatically inserted into the {@link Ext.Viewport viewport}.
+* **{@link Ext.navigation.View#cfg-items items}**: This represents the items that the navigation view contains. Since we only insert one item here, it the first item in the `stack` and is therefore active.
+    * **title**: This is the title that is displayed in the navigation bar (not required).
+    * **{@link Ext.Container#html html}**: We use the `html` configuration here for providing some dummy content.
 
-## Pushing new Views
+## Pushing New Views
 
-To 'push' means to add a new view to the stack of the navigation view. This will do three things:
+To 'push' means to add a new view to the stack of the navigation view. Pushing will trigger the following three actions:
 
 1. Animate the navigation view to show the new item (slide).
 2. Animate the `title` configuration of the item (if specified) in the navigation bar (slide).
-3. Animate the the back button into the navigation bar (slide).
+3. Animate the back button into the navigation bar (slide).
 
-Pushing views is made simple using the {@link Ext.navigation.View#method-push push} method:
+Pushing views is done using the {@link Ext.navigation.View#method-push push} method:
 
     view.push({
         title: 'New views title',
         html: 'Some content'
     });
 
-You can either pass a reference to a component or a configuration like I did above. And of course, the item you push can be any subclass of {@link Ext.Component}:
+You can either pass a reference to a component or use a configuration like in the previous example. And of course, the item you push can be any subclass of {@link Ext.Component}:
 
     var tabPanel = Ext.create('Ext.tab.Panel', {
         items: [
@@ -103,12 +103,12 @@ You can either pass a reference to a component or a configuration like I did abo
 
 ## Popping Views
 
-To 'pop' means to remove the top most (visually active) view from the Navigation View. Of course you need to have more than 1 item in the stack for this to do anything. When you pop, it will do a few things:
+To 'pop' means to remove the topmost (the visually active) view from the Navigation View. Of course you need to have more than one item in the stack for this to operation to have have any result. When you pop a view, it perform the following actions:
 
 1. Animate the navigation view back to the previous item in the stack (reverse slide).
 2. Animate the current title out of view, and animate the previous stacks title into view (slide).
-3. Animate the back button out of view, and if there is still more than 2 items in the stack, animate the previous views back button.
+3. Animate the back button out of view, and if there is still more than two items in the stack, animate the back button of the previous view.
 
-Popping views is very simple. You just call the {@link Ext.navigation.View#method-pop pop} method:
+Popping views is done by calling the {@link Ext.navigation.View#method-pop pop} method:
 
     view.pop();

@@ -1,16 +1,14 @@
-# Using The Draw and Chart Packages in Sencha Touch 2.1
+# Using The Draw and Chart Packages in Sencha Touch
 
-This guide provides an overview of the usage of the Sencha Touch 2.1 draw and chart packages. These packages 
+This guide provides an overview of the usage of the Sencha Touch Draw and Chart packages. These packages 
 enable you to create cross-browser and cross-device graphics in a versatile way.
 
-During the last several months the draw and chart packages have been through a refactor and now they are
-directly integrated into Sencha Touch 2.1. This refactor mainly focuses on:
+During the last several months the draw and chart packages have been refactored and now they are
+directly integrated into Sencha Touch. This refactoring mainly focuses on:
 
 1. **Performance** - This version of the draw and chart packages provides a significant performance enhancement.
-2. **Maintainability** - The draw and chart functionality have been separated thoroughly. It will be easier to fix bugs and provide new 
-features.
-3. **Flexibility** - Both the series and the sprites are provided in such a way that they are easier to customize and or
-extend. You can write your own sprite classes and define attributes that can be automatically animated and manipulated.
+2. **Maintainability** - The draw and chart functionality have been separated thoroughly, making it easier to fix bugs and to provide new features.
+3. **Flexibility** - Both the series and the sprites are provided in such a way that they are easier to customize and/or extend. You can write your own sprite classes and define attributes that can be automatically animated and manipulated.
 
 The following topics are covered in this guide:
 
@@ -20,19 +18,19 @@ The following topics are covered in this guide:
 ## Draw Component
 
 
-The draw package is designed to meet development needs for mobile application graphics rendering, providing a 
-versatile tool that capable of creating cross-browser, cross-device custom graphics and rich animations. The draw 
+The Draw package is designed to meet the development needs for mobile application graphics rendering, providing a 
+versatile tool that is capable of creating cross-browser, cross-device custom graphics and rich animations. The Draw 
 package is designed for performance and enables rich user interactions through a large number of charts with a 
 low memory footprint.
 
 
-The draw package contains a Surface class (`Ext.draw.Surface`) that abstracts the underlying graphics implementation and enables the creation of arbitrarily shaped objects, called sprites, or groups of sprites. Sprites respond to interactions such as touch events (tap, swipe, and so on), and also provide rich animations on all style attributes, such as shape, color, size, and so on.
+The Draw package contains a Surface class (`Ext.draw.Surface`) that abstracts the underlying graphics implementation and enables the creation of arbitrarily shaped objects, called sprites, or groups of sprites. Sprites respond to interactions such as touch events (tap, swipe, and so on), and also provide rich animations on all style attributes, such as shape, color, size, and so on.
 
 
 The underlying implementation for the Surface class is the HTML Canvas engine. Canvas was chosen because procedural drawing with the 2D Canvas API usually outperforms DOM-based approaches.
 
 ### Surface
-You can create a simple drawing surface without loading the chart package at all. This can be useful for creating arbitrary graphics that work on all devices and that animate well. For example, you could create an interactive map of the United States in which each state is a sprite instead of a simple image, or an infographic whose elements are sprite. Using sprites instead of images gives web pages a richer user experience that includes interactivity and animation.
+You can create a simple drawing surface without loading the Chart package at all. This can be useful for creating arbitrary graphics that work on all devices and that animate well. For example, you could create an interactive map of the United States, in which each state is a sprite instead of a simple image, or an infographic whose elements are sprites. Using sprites instead of images gives web pages a richer user experience that provides interactivity and animation.
 
 
     @example preview
@@ -158,13 +156,13 @@ You can create a simple drawing surface without loading the chart package at all
         }
     });
 
-As you may have noticed in the above example, the HiDPI Display is detected and the pixel rate will be boosted to adapt the resolution. Note that this happens transparently to both users and developers. A "pixel" used in Surface is always as the same size as in common HTML page, no matter if the display device is HiDPI. The charts will no longer be fuzzy on Retina devices.
+As you may have noticed in this example, the HiDPI Display is detected and the pixel rate is boosted to adapt the resolution. Note that this happens transparently to both users and developers. A "pixel" used in Surface is always the same size as in a common HTML page, no matter if the display device is HiDPI or not. As a result, charts will no longer look fuzzy on Retina devices.
 
-The draw package also supports a SVG backend. Simply set "Ext.draw.engine.SVG" as the default engine for you Draw Component, and it works all as expected. Continue using the Canvas API to draw procedurally and forget about the backend, it's all abstracted for you.
+The Draw package also supports a SVG backend. Simply set "Ext.draw.engine.SVG" as the default engine for your Draw Component, and it works all as expected. Continue using the Canvas API to draw procedurally and forget about the backend, it is all abstracted for you.
 
 ### Sprites
 
-Sprites are objects rendered on a drawing surface. They are added to a surface in the `getItems()` collection. The example below includes a sprite with the `type` `circle`, a `radius` of `100` and a yellowish color (`#ff8`), which causes a yellow circle to appear in the top left corner of the surface.
+Sprites are objects rendered on a drawing surface. They are added to a surface in the `getItems()` collection. The following example includes a sprite with the `type` `circle`, a `radius` of `100` and a yellowish color (`#ff8`), which causes a yellow circle to appear in the top left corner of the surface.
 
     @example
     // Click at "Live Preview" button above to switch to runnable example.
@@ -184,24 +182,24 @@ Sprites are objects rendered on a drawing surface. They are added to a surface i
         ]
     });
 
-In this new version of the draw package sprites are represented by their own classes. This makes it much easier to modify them along with also improving the performance.
+In the current version of the Draw package, sprites are represented by their own classes. In addition to improving the rendering performance, this also makes it much easier to modify them.
 
-Additionally, the draw package introduces the following enhancements to sprites:
+Additionally, the Draw package introduces the following enhancements to sprites:
 
-- **Attribute definitions** - To create custom sprite types, you will need to define additional attributes that can also be changed by the `setAttribute` method. You can define the data type of an attribute, the method of interpolation for animation, as well as the callbacks to call after the attributes have been changed.
-- **Modifiers** - The modifiers are decorators to the original attributes. Modifiers are chained together like a pipeline carefully separated so that each modifier does not need the knowledge of the others, and the attributes will be decorated though the pipeline. You can chain and unchain the modifiers very easily and the appearance of the sprite will be changed correctly.
-- **Flyweight instancing** - The chart package provides markers as well as labels in every kind of chart. You can register any sprite as the template of an instancing sprite which will basically render the same object multiple times in different places.
+- **Attribute definitions** - In order to create custom sprite types, you will need to define additional attributes that can also be changed by the `setAttribute` method. You can define the data type of an attribute, the method of interpolation for animation, as well as the callbacks to call after the attributes have been changed.
+- **Modifiers** - The modifiers are decorators to the original attributes. Modifiers are chained together like a carefully separated pipeline, so that each modifier does not need to know about the others, and the attributes will be decorated though the pipeline. You can chain and unchain the modifiers very easily and the appearance of the sprite will be changed correctly.
+- **Flyweight instancing** - The Chart package provides markers as well as labels in every kind of chart. You can register any sprite as the template of an instancing sprite, which will basically render the same object multiple times in different places.
 
 Each of these features is described in a subsequent section. 
 
-Besides the `Circle` type, you can use other sprite types. For example:
+In addition to the `Circle` type, you can use the following other sprite types:
 
-- **rect** - Creates a rectangle. You can make round corners by setting its `radius` attribute.
-- **image** - Creates a bitmap image that will be rendered on the surface.
-- **path** - Create arbitrary shapes with the [SVG path syntax](http://www.w3.org/TR/SVG/paths.html). This is the most powerful primitive sprite type. For a tutorial on getting started with the SVG path syntax, see the [Mozilla Developer Network](https://developer.mozilla.org/en/SVG/Tutorial/Paths).
+- **rect** - Creates a rectangle. You can provide it with round corners by setting its `radius` attribute.
+- **image** - Creates a bitmap image that is rendered on the surface.
+- **path** - Creates arbitrary shapes using the [SVG path syntax](http://www.w3.org/TR/SVG/paths.html). This is the most powerful primitive sprite type. For a tutorial on the SVG path syntax, see the [Mozilla Developer Network](https://developer.mozilla.org/en/SVG/Tutorial/Paths).
 
 
-Unlike the old draw package, attributes are defined with a naming convention conforming to HTML Canvas API rather than SVG API. However, you can still use the old naming convention conforming to SVG API due to the aliasing mechanism in attribute definition.
+Unlike the old Draw package, attributes are defined with a naming convention that conforms to the HTML Canvas API rather than SVG API. However, you can still use the old naming convention conforming to the SVG API due to the aliasing mechanism in attribute definition.
 
 In addition, sprites can be transformed using the following attributes:
 
@@ -215,20 +213,20 @@ In addition, sprites can be transformed using the following attributes:
 - **translationX** - The translation on x direction.
 - **translationY** - The translation on y direction.
 
-We no longer store transform objects in the set of attributes, but you can continue to use transform objects to set those attributes. The definition of transform objects are compatible with the old draw package. The transforms will be performed in the order of scaling, then rotation and then translation.
+The package no longer stores transform objects in the set of attributes, but you can continue to use transform objects to set those attributes. The definition of transform objects are compatible with the old Draw package. The transforms are performed in the following order: scaling, rotation, translation.
 
-After setting any of the above transform attributes, the `matrix` and `inverseMatrix` attributes will be updated. In the new draw package, you can also simply set the `matrix` attributes directly. The matrix you give will be extracted into the above attributes to retain consistency.
+After setting any of the previously described transform attributes, the `matrix` and `inverseMatrix` attributes are updated. In the new Draw package, you can also simply set the `matrix` attributes directly. In order to retain consistency, the matrix you give will be extracted into the above attributes.
 
 ### Attribute Definitions And Modifiers
 
-The Sencha Touch 2.1 draw package also introduces a mechanism for sprite attribute definitions as well as sprite modifiers. They are a huge improvement on both maintainability and performance. These are essential if you want to write your own sprites. Let us take a closer look at each of these features:
+The Sencha Touch 2.1 Draw package also introduces a mechanism for sprite attribute definitions, as well as sprite modifiers. These features represent an important improvement on both maintainability and performance, and they are essential if you want to write your own sprites. Let us take a closer look at each of these features:
 
 #### Attribute Definition
 
-Attribute definition enables you to define custom attributes of a custom sprite class to perform "lazy" updates. The primary purpose of an attribute definition is to define how data is used for changing the content of a set of attributes when the `setAttributes` method is called. Each sprite has a member called `attr` (the "set of attributes" of the sprite.) All sprite states – as well as caches – are stored in the set of attributes. This architecture deliberately separate the "Model" (attributes) from the "View" (sprite.) This way we can share the same sprite to display a different set of attributes, which is how flyweight instancing works.
+Attribute definition enables you to define custom attributes of a custom sprite class to perform "lazy" updates. The primary purpose of an attribute definition is to define how data is used for changing the content of an attribute set when the `setAttributes` method is called. Each sprite has a member called `attr` (the "set of attributes" of the sprite.) All sprite states – as well as caches – are stored in the set of attributes. This architecture deliberately separates the "Model" (attributes) from the "View" (sprite). This way we can share the same sprite to display a different set of attributes, which is how flyweight instancing works.
 
 
-Attribute definitions are given as below (a snippet from {@link Ext.chart.series.sprite.Line}):
+Attribute definitions are illustrated in the following example (a snippet from {@link Ext.chart.series.sprite.Line}):
 
     ...
     inheritableStatics: {
@@ -266,21 +264,21 @@ Attribute definitions are given as below (a snippet from {@link Ext.chart.series
     },
     ...
     
-The attributes definitions are defined in the `inheritableStatics` section of a class definition, they will be inherited automatically through class inheritance. Also because it is defined as a static member, the object that manages the mechanism will be created only once for each class. Due to the separation of attributes and sprites, we are able to use the same attribute manager ({@link Ext.draw.sprite.AttributeDefinition}) to process all the sprites of the same type.
+The attributes definitions are defined in the `inheritableStatics` section of a class definition, they will be inherited automatically through class inheritance. Because it is defined as a static member, the object that manages the mechanism is created only once for each class. Due to the separation of attributes and sprites, we are able to use the same attribute manager ({@link Ext.draw.sprite.AttributeDefinition}) to process all the sprites of the same type.
 
-Attribute definitions can define appliers (called `processors` in the code) and updaters in a relatively similar way as the Sencha Touch config system, but with batched update processors for better performance. For example, when you change the `width` and `height` of a rectangle sprite, its cached path will be updated. The draw package batches the updating if you set the both attributes in the same `setAttributes` call, so that the path needs to be calculated only once. Appliers of attribute definitions, or processors, enable you to check and normalize a value before it is applied to the set of attributes. Since names can be used as references to predefined processors, this approach is very convenient and vastly enhances maintainability. Attribute definitions also enable you to define aliases to the attribute items so you can use legacy code using the old Sencha Touch 1.0 naming conventions without a huge compatibility impact.
+Attribute definitions can define appliers (called `processors` in the sample code) and updaters in a relatively similar way as the Sencha Touch config system, but with batched update processors for better performance. For example, when you change the `width` and `height` of a rectangle sprite, its cached path is updated. The Draw package batches the updating if you set both attributes in the same `setAttributes` call, so that the path needs to be calculated only once. Appliers of attribute definitions, or processors, enable you to check and normalize a value before it is applied to the set of attributes. Since names can be used as references to predefined processors, this approach is very convenient and vastly enhances maintainability. Attribute definitions also enable you to define aliases to the attribute items, so you can use legacy code using the old Sencha Touch 1.0 naming conventions without a major compatibility impact.
 
 
 #### Modifiers
 Modifiers enable you to add changes to a set of attributes. A modifier is an adaptation of the [Decorator pattern](http://en.wikipedia.org/wiki/Decorator_pattern). A sprite can have a list of modifiers that are chained together to process the content of an attribute set. In this way, a modifier is like a pipeline of filters that build up the resulting attributes progressively. For instance, when you query the value of an attribute set, the Highlight modifier changes certain attributes to be its highlighted value; similarly, the Animation modifier generates the current value for each animated attribute for each frame.
 
-Modifiers are designed to work independently. This increases maintainability by making each modification modular. Previously, highlighting a sprite involved working with an animation inside the highlighting code, which involved about ten lines of similar, potentially error-prone code every time you want to do the trick. You need to use a different way to highlight a sprite depending on whether it is in an animation or not. In the animation part, you need to do the same thing again. Now however, with the use of modifiers, highlighting is done in only two lines and only involves setting the `highlighted` attribute that will activate the highlight modifier. The modifier highlights the sprite exactly as expected without needing to know the information about the animation.
+Since Modifiers are designed to work independently, this increases maintainability by making each modification modular. Previously, highlighting a sprite involved working with an animation inside the highlighting code, which involved about ten lines of similar, potentially error-prone code every time you wanted to do the trick. You needed to use a different way to highlight a sprite, depending on whether it was in an animation or not. In the animation part, you needed to do the same thing again. Now however, with the use of modifiers, highlighting is done in only two lines and only involves setting the `highlighted` attribute that will activate the highlight modifier. The modifier highlights the sprite exactly as expected, without needing to know the information about the animation.
 
-Modifiers are implemented in such a way that queries to the attribute are actually querying a property that directly exists on the JavaScript object. The attributes set are structured as a prototype chain controlled by modifiers.
+Modifiers are implemented in such a way that queries to the attribute are actually querying a property that directly exists on the JavaScript object. The attributes set is structured as a prototype chain controlled by modifiers.
 
-In the `setAttributes` method, the changes you want to make to the attributes set is called a "change request". `setAttributes` will call the `pushDown` method against the request at the end of the modifier chain. The modifier, who can actually modify the change request, is responsible for passing the change request down through the chain when its necessary (a counter example is when the modifier knows that no changes will be made after this point, then it can stop the `pushDown`). The remaining changes will be popped up as a return value. The modifiers can also modify the popped up changes and/or place the changes to where (in the prototype chain) it should actually be placed.
+In the `setAttributes` method, the changes you want to make to the attributes set is called a "change request". `setAttributes` will call the `pushDown` method against the request at the end of the modifier chain. The modifier, who can actually modify the change request, is responsible for passing the change request down through the chain when this is necessary (a counter example is when the modifier knows that no changes will be made after this point, then it can stop the `pushDown`). The remaining changes are popped up as a return value. The modifiers can also modify the popped up changes and/or place the changes to where (in the prototype chain) it should actually be placed.
 
-The implementation of modifier is sophisticated and might be hard to understand. But in practice it is quite simple to use. In most cases you don't need to know what's behind it and it simply works. For example, you don't need to initiate an update loop or "start" something to use an `Animation` modifier. You simply set the duration time of the modifier and anytime you change an attribute of the sprite it will start a smooth animation.
+Although the implementation of modifiers is sophisticated and might be hard to understand, in practice it is quite simple to use. In most cases you do not need to know what is behind it, and it simply works. For example, you do not need to initiate an update loop or "start" something to use an `Animation` modifier. You simply set the duration time of the modifier and then, anytime you change an attribute of the sprite, it will start a smooth animation.
 
     @example
     Ext.create("Ext.draw.Component", {
@@ -325,11 +323,11 @@ The implementation of modifier is sophisticated and might be hard to understand.
 ### Flyweight Instancing Of Sprites
 
 
-Another enhancement introduced with the Sencha Touch 2.1 draw package is a feature called flyweight instancing, which provides major performance improvements.
+Another enhancement introduced with the Sencha Touch 2.1 Draw package is a feature called flyweight instancing, which provides major performance improvements.
 
-The new chart package represents many visual elements of a chart as "markers" -- flyweight sprites forked from a single set of attributes prototype. These markers share the same sprite object. In this way, a sprite defines the logic for rendering (hence the "View") rather than the data (hence the "Model"). Creating massive number of sprites is a heavyweight operation and can be computationally expensive. Instead, for a set of objects that differ slightly, only the incremental data for rendering is created, which saves a significant amount of memory. This technique is often referred to as "instancing rendering" in other computer graphics fields. In the new draw package an "Instancing Sprite" is a container of the forked instances and renders them using instancing rendering.
+The new Chart package represents many visual elements of a chart as "markers" -- flyweight sprites forked from a single set of attributes prototype. These markers share the same sprite object. In this way, a sprite defines the logic for rendering (hence the "View") rather than the data (hence the "Model"). Creating massive number of sprites is a heavyweight operation and can be computationally expensive. Instead, for a set of objects that differ slightly, only the incremental data for rendering is created, which saves a significant amount of memory. This technique is often referred to as "instancing rendering" in other computer graphics fields. In the new Draw package an "Instancing Sprite" is a container of the forked instances and renders them using instancing rendering.
 
-The chart package provides "markers" in every chart type. Markers are supported by a subclass of instancing sprite called `Markers` sprite. The main difference between markers and regular instancing sprites is that markers are attached to another sprite called "marker holders". Whenever the marker holders are drawn, the marker sprite will collect information about the changes on the instances. While previously a marker was only a small subset of a sprite config object, in the current version you can use you own template and it can be anything and can appear anywhere.
+The Chart package provides "markers" in every chart type. Markers are supported by a subclass of instancing sprite called `Markers` sprite. The main difference between markers and regular instancing sprites is that markers are attached to another sprite called "marker holders". Whenever the marker holders are drawn, the marker sprite will collect information about the changes on the instances. While previously a marker was only a small subset of a sprite config object, in the current version you can use your own template and it can be anything and can appear anywhere.
 
 
 
@@ -350,10 +348,10 @@ The chart package provides "markers" in every chart type. Markers are supported 
 ## Chart Component Overview
 
 
-The chart package consists of a hierarchy of classes to provide data visualization functionality.
-These include series, axes, interactions and mechanisms to implement markers and legend.
+The Chart package consists of a hierarchy of classes that provide data visualization functionality.
+These include series, axes, interactions, and mechanisms for implementing markers and legends.
 This section provides an overview on how these classes are tied together and what functionality is included in each 
-class. The following sections cover the specific axes, series and interactions.
+class. The following sections cover the specific axes, series, and interactions.
 
     @example preview
     var store = Ext.create("Ext.data.Store", {
@@ -503,38 +501,29 @@ class. The following sections cover the specific axes, series and interactions.
 
 ### The Chart Component Class
 
-All types of the chart components are extended from  {@link Ext.chart.AbstractChart The abstract chart class},
+All types of chart components are extended from  {@link Ext.chart.AbstractChart The abstract chart class},
 which extends {@link Ext.draw.Component}. 
-A chart component is the container to manage series and axes.
-It is responsible to layout the series and axes 
-every time when the size is changed. An implementation of the abstract class must override the `performLayout` method.
-For example, cartesian chart needs to respond to the changes of the thickness of the axes and recalculate the series
-area.
+A chart component is the container for managing series and axes. It is responsible for laying out the series and axes every time the size is changed. An implementation of the abstract class must override the `performLayout` method.
+For example, a cartesian chart needs to respond to the changes of the thickness of the axes and recalculate the series area.
 
-In the new package, there are three type of charts:
+In the new Chart package, there are three type of charts:
 
-- **{@link Ext.chart.CartesianChart Cartesian Chart}** - This class is used to layout series and axes in an cartesian 
-coordinate system. 
-Another name `Ext.chart.Chart` is also used to refer to this class. 
-- **{@link Ext.chart.PolarChart Polar Chart}** - This class is used ot layout sereis and axes in an polay coordinate
+- **{@link Ext.chart.CartesianChart Cartesian Chart}** - This class is used to render series and axes in an cartesian coordinate system. `Ext.chart.Chart` is also used to refer to this class. 
+- **{@link Ext.chart.PolarChart Polar Chart}** - This class is used to render series and axes in an polar coordinate
 system.
-- **{@link Ext.chart.SpaceFillingChart Space Filling Chart}** - This class simply fills the series to the size of the
-component. No axes can be used in this type of chart.
+- **{@link Ext.chart.SpaceFillingChart Space Filling Chart}** - This class is used to fill the series to the size of the component. No axes are used in this type of chart.
 
-A chart component manages:
+A Chart component manages the following items:
 
 - **Axes** - These are accessed through `Ext.chart.series.Series` and represent all the axes being defined and drawn 
 for this visualization. This is a mixed collection.
 - **Series** - These are accessed through `Ext.chart.series.Series` and represent all the series being drawn for the 
 chart. This could be line, bar, scatter, and so on. This is also a mixed collection.
-- **Interactions** - These are controllers that directly manipulate the series and axes when certain touch gesture is 
-recognized.
-- **Legend Store** - This represents the legend information collected from series. Normally you can attach a data list
-to this store and get automatic updated on the changes of legend information.
+- **Interactions** - These are controllers that directly manipulate the series and axes when certain touch gestures are recognized.
+- **Legend Store** - This represents the legend information collected from the series. Normally you can attach a data list to this store and get automatically updated on the legend information changes.
 
-Chart component delegates touch events to different areas of the chart, such as the axes, series, and so on.
-You can listen to the "itemXXXX" events directly on the chart component and it will delegate the events from registered
-series:
+A Chart component delegates touch events to different areas of the chart, such as the axes, series, and so on.
+You can listen to the "itemXXXX" events directly on the Chart component and it will delegate the events from registered series:
 
     chart.on({
         'itemtap': function(series, item, e) {
@@ -545,29 +534,26 @@ series:
 ## Axes
 
 
-In Sencha Touch 2.1 chart package, we provided a class {@link Ext.chart.axis.Axis} to represent all kinds of axes.
-The axis object works differently according to the position you dock the axis. There are 4 types of docking:
+In the Sencha Touch 2.1 Chart package we provide a class {@link Ext.chart.axis.Axis} to represent all kinds of axes.
+The axis object works differently according to the its docking position. There are four types of docking:
 
-- **Left/Right** - The axis will be vertical.
-- **Top/Bottom** - The axis will be horizontal.
-- **Radial** - The axis will be placed radially inside a polar chart to identify current radius.
-- **Angular** - The axis will be placed outside against the boundary of the polar chart to identify current angle.
+- **Left/Right** - The axis is vertical.
+- **Top/Bottom** - The axis is horizontal.
+- **Radial** - The axis is placed radially inside a polar chart to identify the current radius.
+- **Angular** - The axis is placed outside against the boundary of the polar chart to identify the current angle.
 
-Axes helps series to map data values into coordinates. They are bound to the type of data that needs to be represented.
+Axes help series to map data values into coordinates. They are bound to the type of data that needs to be represented.
 There are axes for category information (`Ext.chart.axis.Category`) and for quantitative information
-(`Ext.chart.axis.Numeric`). The Time axis (`Ext.chart.axis.Time`) enables the rendering of information over a specific 
-period of time and updating with smooth animations.
+(`Ext.chart.axis.Numeric`). The Time axis (`Ext.chart.axis.Time`) enables the rendering of information over a specific period of time and the updating with smooth animations.
 
 See the {@link Ext.chart.axis.Axis axis class documentation} for specific information about each axis.
 The series examples contained in subsequent sections of this guide provide axis configuration examples.
 
-You can enable grids to be attached to an axis object. Grids are placed perpendicular to the axis and drawn below any
-series. Grids can be styled by given a style object as the `grid` field of the axis config. By given the `grid` field
-a simple `true` value, it will draw the grid with default style.
-Grid style receives two special fields `even` and `odd` to specify additional styles for even and odd grid.
-You can also set `fillStyle` of a grid, it will render an fill between two grids.
+You can enable grids to be attached to an axis object. Grids are placed perpendicular to the axis and are drawn below the series. Grids can be styled by specifying a style object as the `grid` field of the axis config. By giving the `grid` field a `true` value, it will draw the grid with default style.
+The grid style receives two special fields, `even` and `odd`, to specify additional styles for even and odd grids.
+You can also set the `fillStyle` parameter of a grid, which will render a fill between two grids.
 
-The configuration shown previously produces minor ticks in the left axis for the line series, as shown in the following figure:
+For example, the following configuration produces minor ticks in the left axis for the line series:
 
     @example
     Ext.create("Ext.chart.Chart", {
@@ -648,12 +634,12 @@ including the Chart, Axis, and Series options. For more specific information, se
 
 #### Area
 
-The area series creates a stacked area chart, which is typically used to display multiple aggregated layers of 
-information. As the same as other series, the area series must be added into the `series` config of the chart.
+The Area series creates a stacked area chart, which is typically used to display multiple aggregated layers of 
+information. Similar to other series, the Area series must be added into the `series` config of the chart.
 
-You can specify multiple y fields on a stacked series like area series and bar series. 
+You can specify multiple y fields on a stacked series such as Area series and Bar series. 
 
-A typical configuration object for the Area series looks like what you can see in the code of the demo:
+A typical configuration object for the Area series looks as in the following code sample:
 
     @example
     Ext.create("Ext.chart.CartesianChart", {
@@ -728,12 +714,9 @@ A typical configuration object for the Area series looks like what you can see i
 #### Bar
 
 
-The bar series creates a stackable/groupable bar chart, which is typically used to display categorized numeric data that shows 
-progression or regression. Note that different from the old chart package, a bar series refers to a vertical
-bar series, or a column series. You can get the horizontal one by setting `flipXY` to the chart.
+The Bar series creates a stackable or groupable bar chart, which is typically used to display categorized numeric data that shows progression or regression. Note that opposed to the old chart package, a Bar series refers to a vertical bar series, or a column series. You can obtain the horizontal one by setting `flipXY` to the chart.
 
-A bar series can either be stacked or grouped. Set `stacked` config on the series to `false` to switch the series 
-to be grouped.
+A Bar series can either be stacked or grouped. You can set the `stacked` config on the series to `false` in order to switch the series to the grouped mode.
 
 A sample Bar chart is shown in the following example:
 
@@ -809,7 +792,7 @@ A sample Bar chart is shown in the following example:
 
 #### Line
 
-The line series creates a line chart, an alternative to a bar chart for showing categorized numeric data that 
+The Line series creates a line chart, an alternative to a bar chart for showing categorized numeric data that 
 shows progression or regression. The following example shows a typical configuration object for the Line series:
 
     @example
@@ -902,10 +885,9 @@ shows progression or regression. The following example shows a typical configura
 The Pie series creates a pie chart, a great way to display quantitative information for a number of categories 
 that also have a meaning as a whole, for example, all 12 months of a given year. 
 
-Note that unless all the previous series, pie series and radar series are polar series. You cannot use them with a
-cartesian chart. Instead, they must be contained in a polar chart.
+Note that opposed to all previous series, pie series and radar series are polar series. As a result, you cannot use them with a cartesian chart, they must be contained instead in a polar chart.
 
-A Pie chart example is given as followed:
+A Pie chart example is given in the following code sample:
 
     @example
     Ext.create('Ext.chart.PolarChart', {
@@ -957,7 +939,7 @@ A Pie chart example is given as followed:
 
 
 The Radar series creates a radar chart, a great way to display a comparison of different quantitative values 
-for a constrained number of categories. An example is given as followed:
+for a constrained number of categories. A Radar series example is illustrated by the following code:
 
     @example
     // Create a panel to put the chart in.
@@ -1033,15 +1015,13 @@ for a constrained number of categories. An example is given as followed:
     });
 
 
-The following code snippet shows a typical configuration object for the Radar series.
-
 
 #### Scatter
 
 
 The scatter series creates a scatter chart, which enables an application to display more than two variables in 
 the same visualization. 
-These variables can be mapped onto x, y coordinates and also to an element's radius/size, color, and so on. 
+These variables can be mapped onto x, y coordinates and also to an element's properties, such as radius, size, color, and so on. 
 
     @example
     // Create a panel to put the chart in.
@@ -1119,12 +1099,13 @@ These variables can be mapped onto x, y coordinates and also to an element's rad
     
 #### Gauge
 
-The gauge series creates a gauge chart, typically used to show progress in a certain variable.
-Besides of using stores, you can also simply set a value to the gauge series to show the value.
+The Gauge series creates a gauge chart, typically used to show progress in a certain variable.
+In addition to using stores, you can also set a value of the gauge series to show the value.
 
-Gauge series uses space fill chart type.
+A Gauge series uses the space fill chart type.
 
-An example is given as followed:
+An example is given in the following code sample:
+
     @example
     var value = 300;
     Ext.create("Ext.Panel", {
@@ -1189,8 +1170,8 @@ An example is given as followed:
 ## Interactions
 
 
-This section introduces the interaction features in Sencha Touch chart package.
-By taking advantage of these features, you can create highly interactive charts that enables users to visualize 
+This section introduces the interaction features in the Sencha Touch Chart package.
+By taking advantage of these features, you can create highly interactive charts that enable users to visualize 
 and navigate complex data sets.
 
 ### A Great Mobile Chart User Experience
@@ -1199,25 +1180,23 @@ Deploying charts on mobile touch devices poses some unique problems over desktop
 
 
 - The small screen size limits the amount and complexity of data that can be displayed at once.
-- Touch input makes it difficult for the user to accurately select data points in order to view detailed information.
-- Hardware limitations make it hard for mobile devices to redraw chart data.
+- The touch input makes it difficult for the user to accurately select data points in order to view detailed information.
+- The hardware limitations make it hard for mobile devices to redraw chart data.
 
 
-These unique issues make the sort of charts commonly seen on the Web practically unusable on touch devices. In order to deliver a great mobile chart user experience, Touch Charts enables a level of interactivity that is not available with other current charting products. Additionally, Touch Charts interactions provide a high degree of configurability, and they are designed to perform well on mobile hardware.
+These unique issues make the sort of charts commonly seen on the Web practically unusable on touch devices. In order to deliver a great mobile chart user experience, Touch Charts enables a level of interactivity that is not available with other current charting products. Additionally, Touch Charts interactions provide a high degree of configurability, and are designed to perform well on mobile hardware.
 
 
-Let us take a closer look at the interaction types supported by Touch Charts.
+Let us take a closer look at the interaction types supported by Sencha Touch Charts.
 
 
 ### Adding Interactions To Your Chart
 
 
 To add interactions to a chart, set the `interactions` config of the chart to an array of interaction config objects.
-Each object must be an string or contains a `type` property matching one of the interaction types,
-which are described in the subsequent sections. Each object may also contain additional config options that are 
-appropriate for a particular interaction.
+Each object must be a string or must contains a `type` property matching one of the interaction types, described in the subsequent sections. Each object may also contain additional config options that are appropriate for a particular interaction.
 
-For example let us consider the following code snippet that creates a Chart and configures interactions on it:
+For example let us consider the following code sample that creates a Chart and configures interactions on it:
 
     @example preview
     Ext.create("Ext.Panel", {
@@ -1291,16 +1270,13 @@ For example let us consider the following code snippet that creates a Chart and 
 
 This column chart is configured with the following two interactions:
 
-- **`panzoom`** - to allow zooming and panning along the left and bottom axes. You can toggle the mode by click on the 
+- **`panzoom`** - Allows zooming and panning along the left and bottom axes. You can toggle the mode by click on the 
 button on the top-left corner.
-- **`itemhighlight`** - to highlight a bar item by tapping on it.
-- **`iteminfo`** - to display detailed information about a series data point in a popup panel on the `doubletap`
+- **`itemhighlight`** - Highlights a bar item by tapping on it.
+- **`iteminfo`** - Displays detailed information about a series data point in a popup panel on the `doubletap`
 gesture.
 
-You can define you own interaction by implementing {@link Ext.chart.interactions.Abstract} class and register the name
-using an alias with prefix `interaction.`. For example if you want to create an interaction called `remove`, create
-an alias of the class named `"interaction.remove"`. Then, you can set the `type: 'remove'` in the interaction config to
-use it.
+You can define your own interaction by implementing {@link Ext.chart.interactions.Abstract} class and register the name using an alias with the `interaction` prefix. For example, if you want to create an interaction called `remove`, create an alias of the class named `"interaction.remove"`, then  set the `type: 'remove'` in the interaction config. 
 
 ### Gestures
 
@@ -1311,11 +1287,11 @@ such as the `itemhighlight` and `iteminfo` interactions, which are both bound to
 
 To allow for customization of gestures, each interaction exposes one or more `gesture` config properties. 
 For simple interactions configured with a single gesture use the `gesture` config, as shown in the following code 
-snippet:
+sample:
 
     interactions: [{
         type: 'iteminfo',
-        gesture: 'doubletap' //changed to use doublet instead of the default itemtap gesture
+        gesture: 'doubletap' //changed to use doubletap instead of the default itemtap gesture
     }]
 
 More complex interactions that use more than a single gesture expose multiple `fooGesture` configs for 
@@ -1325,12 +1301,10 @@ See the {@link Ext.chart.interactions.Abstract} for each interaction class to se
 
 ### Item Highlighting
 
-The `itemhighlight` interaction enables you to highlight individual data point items on the chart.
-It is bound to the `tap` gesture by default.
+The `itemhighlight` interaction enables you to highlight individual data point items on the chart and is bound to the `tap` gesture by default.
 
 The highlight effects can also be customized via the `highlightCfg` config property on each series.
-The highlighting effect resulting from the interaction configured in the following code snippet is
-illustrated by the following figure:
+The following code example illustrates a highlighting effect on the tap gesture:
 
     interactions: [{
         type: 'itemhighlight',
@@ -1344,14 +1318,12 @@ See the [class documentation](#!/api/Ext.chart.interactions.ItemHighlight) for d
 ### Item Info
 
 The `iteminfo` interaction enables you to select an individual data point item on the chart and view detailed 
-information about that item in a popup panel. It is bound to `itemtap` by default. Although you can use
-`gesture` config to change that, you still have to bind the interaction on `itemXXXX` events.
+information about it in a popup panel. It is bound to `itemtap` by default. Although you can use the
+`gesture` config to change this behavior, you still have to bind the interaction on `itemXXXX` events.
 
 The popup panel that is displayed does not have any default content. Its content is dependent on the particular 
 data model and chart configuration that is being used. You have to implement a handler for the interaction's 
-`show` event to populate the panel. The handler is passed a reference to the interaction instance, the selected item, 
-and the panel instance. The effect resulting from the interaction configured in the following code snippet is 
-illustrated by the following example:
+`show` event to populate the panel. The handler is passed a reference to the interaction instance, the selected item, and the panel instance. An example is given by the following code:
 
 
     interactions: [{
@@ -1370,16 +1342,11 @@ See the [class documentation](#!/api/Ext.chart.interactions.ItemInfo) for detail
 
 ### Axis Pan/Zoom Navigation
 
-The `panzoom` interaction enables users to navigate one or more axes in a Cartesian chart by zooming in/out and panning.
-This is particularly useful for series with large numbers of data points, 
-since zooming enables users to see details and to interact more easily with individual data points.
+The `panzoom` interaction enables users to navigate one or more axes in a Cartesian chart by zooming in/out and panning. This is particularly useful for series with large numbers of data points, since zooming enables users to see details and to interact more easily with individual data points.
 
-You can get a toggle button from the interaction by using `getModeToggleButton` method and put it any where. It will
-be destroyed along with the destruction of the interaction. 
+You can get a toggle button from the interaction by using the `getModeToggleButton` method and place it anywhere. It will then be destroyed along with the destruction of the interaction. 
 
-On devices that support multi-touch events, a two-touch pinch gesture performs a zoom and a single-touch drag performs 
-a pan. This interaction must be bound to one or more axes. Parameters for the pan/zoom actions can be configured 
-individually for each axis.
+On devices that support multi-touch events, a two-touch pinch gesture performs a zoom and a single-touch drag performs a pan. This interaction must be bound to one or more axes. Parameters for the pan/zoom actions can be configured individually for each axis, as shown in the following sample code:
 
     interactions: [
         {
@@ -1402,8 +1369,7 @@ See the [class documentation](#!/api/Ext.chart.interactions.PanZoom) for detaile
 
 ### Pie/Radar Rotation
 
-The `rotate` interaction enables users to rotate a pie or radar chart.
-By default users can perform a rotation using a drag gesture.
+The `rotate` interaction enables users to rotate a pie or a radar chart, by default the rotation being performed using a drag gesture.
 The following code snippet is an example:
 
     interactions: ['rotate']
@@ -1415,17 +1381,15 @@ See the [class documentation](#!/api/Ext.chart.interactions.Rotate) for detailed
 
 The chart {@link Ext.chart.AbstractChart#getLegendStore exposes a store} to represent legend information 
 collected from series. Technically, you can do anything with this store. Again, this architecture can help you 
-decouple the legend information from the legend component so you can use whatever technology and customization 
-to show the legend at whatever place you want to put it.
+decouple the legend information from the legend component, so you can use any technology and customization 
+for showing the legend at any desired place.
 
-For you convenience, we also provide a default legend component that already implemented some common and basic 
-functionality for displaying legend. The Chart configuration object accepts a `legend` section to enable the 
-default legend component and insert them in the parent of the chart. The default legend component contains a `position`
-config and it will be docked on that side.
+For you convenience, we also provide a default legend component that already implements some common and basic 
+functionality for displaying legends. The Chart configuration object accepts a `legend` section to enable the 
+default legend component and insert it in the parent of the chart. The default legend component contains a `position` config and it is docked on that side.
 
-The example below shows how the legend looks when docked on different sides. 
-Note that due to the separation between legend information and legend component,
-you can attached multiple legend to the same chart and they work along with each other magically well.
+The following example shows how the legend looks when docked on different sides. 
+Note that due to the separation between legend information and legend component, you can attache multiple legends to the same chart and they work along well with each other.
 
     @example preview
     var cmp = Ext.create("Ext.chart.Chart", {

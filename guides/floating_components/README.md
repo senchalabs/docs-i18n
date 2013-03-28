@@ -1,16 +1,15 @@
 # Floating Components
 
-Often in you need to have floating or centering components in your applications. Generally this happens when you need to ask the user what to do next, or perhaps when you want to show a dropdown style menu.
+Often you need to have floating or centering components in your applications. Generally this happens when you need to ask the user what to do next, or perhaps when you want to show a dropdown style menu.
 
-Sencha Touch allows you to do three things to achieve this:
+Sencha Touch supports the following behaviors of floating components:
 
-- center any component on the screen
-- absolutely position it on the screen (just like CSS)
-- or show it by another component
+- Centering a component on the screen
+- Positioning a component absolutely on the screen (similar to CSS)
 
 ## Centering a Component
 
-You can center any component within its container in Sencha touch by using the {@link Ext.Component#centered centered} configuration. This will *always* center the component, even when its parent containers size changes.
+In Sencha Touch you can center any component within its container by using the {@link Ext.Component#centered centered} configuration. This *always* centers the component, even when its parent containers size changes.
 
     @example miniphone preview
     Ext.Viewport.add({
@@ -19,7 +18,7 @@ You can center any component within its container in Sencha touch by using the {
         centered: true
     });
 
-When using {@link Ext.Component#centered centered}, the width and height of the component is automatically set depending on the size of the content. However, if the content of the component is dynamic, like a scroller panel, the width and height must be set manually.
+When using {@link Ext.Component#centered centered}, the width and the height of the component are automatically set depending on the size of the content. However, if the content of the component is dynamic, such as for example a scroller panel, the width and height must be set manually.
 
     @example miniphone
     Ext.Viewport.add({
@@ -31,7 +30,7 @@ When using {@link Ext.Component#centered centered}, the width and height of the 
         height: 100
     });
 
-Centered components are centered within their container. In the above examples we are adding a component into Ext.Viewport, so the component is centered in the center of the screen (as the Viewport is the full size of the screen). However, if we want, we can centered a component within a random sized container.
+Centered components are centered within their container. In the previous examples we added a component into a Ext.Viewport, so the component is centered in the center of the screen (as the Viewport is the full size of the screen). However, a component can also be centered within a random sized container.
 
     @example phone preview
     Ext.Viewport.add({
@@ -57,7 +56,7 @@ Centered components are centered within their container. In the above examples w
         ]
     });
 
-You can also use the {@link Ext.Component#setCentered setter} for centered to dynamically change if a component is centered or not at any time.
+You can also use the {@link Ext.Component#setCentered setter} for centered to dynamically change the centering of a component at any time.
 
     @example miniphone preview
     var panel = Ext.Viewport.add({
@@ -86,11 +85,11 @@ You can also use the {@link Ext.Component#setCentered setter} for centered to dy
         ]
     });
 
-## Absolutely positioning a Component
+## Absolutely Positioning a Component
 
-You can also absolutey position a component in Sencha Touch using the {@link Ext.Component#top top}, {@link Ext.Component#right right}, {@link Ext.Component#bottom bottom} and {@link Ext.Component#left left} configurations of any {@link Ext.Component component}. This works just like CSS `position: absolute`.
+You can also absolutey position a component in Sencha Touch using the {@link Ext.Component#top top}, {@link Ext.Component#right right}, {@link Ext.Component#bottom bottom} and {@link Ext.Component#left left} configurations of any {@link Ext.Component component}. This works like the `position: absolute` CSS code.
 
-For example, you can do the following (CSS):
+For example, the following CSS positioning:
 
     .element {
         position: absolute;
@@ -98,7 +97,7 @@ For example, you can do the following (CSS):
         bottom: 5px;
     }
 
-..with a component in Sencha Touch like this:
+...can be replicated in Sencha Touch with a component as follows:
 
     @example miniphone
     Ext.Viewport.add({
@@ -108,7 +107,7 @@ For example, you can do the following (CSS):
         right: 5
     });
 
-And of course, because these position properties are all configurations, you can use the appropriate setters to change them at any time:
+Additionally, since these position properties are all configurations, you can use the appropriate setters to change them at any time:
 
     @example miniphone preview
     var panel = Ext.Viewport.add({
@@ -150,7 +149,7 @@ And of course, because these position properties are all configurations, you can
 
 ## Modal Components
 
-Making a floating or centered container {@link Ext.Container#modal modal} masks the rest of its parent container so there are less distractions for the user. You simply set the {@link Ext.Container#modal modal} configuration to true.
+Making a floating or centered container {@link Ext.Container#modal modal} masks the rest of its parent container, which results in a layout that is less distracting to users. To accomplish this, you set the {@link Ext.Container#modal modal} configuration to true.
 
     @example preview
     Ext.Viewport.add({
@@ -163,7 +162,7 @@ Making a floating or centered container {@link Ext.Container#modal modal} masks 
     Ext.Viewport.setHtml('This content is in the viewport and masked because the panel is modal.');
     Ext.Viewport.setStyleHtmlContent(true);
 
-You can also use the {@link Ext.Container#hideOnMaskTap hideOnMaskTap} configuration to make the panel and mask disappear when a user taps on the mask:
+You can also use the {@link Ext.Container#hideOnMaskTap hideOnMaskTap} configuration to make the panel and the mask disappear when a user taps on the mask:
 
     @example preview
     Ext.Viewport.add({
@@ -177,4 +176,4 @@ You can also use the {@link Ext.Container#hideOnMaskTap hideOnMaskTap} configura
     Ext.Viewport.setHtml('This content is in the viewport and masked because the panel is modal.<br /><br />You can also tap on the mask to hide the panel.');
     Ext.Viewport.setStyleHtmlContent(true);
 
-Please note that you can only add {@link Ext.Container#modal modal} to a {@link Ext.Container}, or subclass of it (like {@link Ext.Panel}).
+Please note that you can only add {@link Ext.Container#modal modal} behavior to a {@link Ext.Container}, or a subclass of it (such as {@link Ext.Panel}).

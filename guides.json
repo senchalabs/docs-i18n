@@ -24,7 +24,6 @@
             },
             {
                 "name": "command",
-                "url": "../../../command_guides/command",
                 "title": "Introduction to Sencha Cmd",
                 "description": "Introduction and overview of Sencha Cmd"
             }
@@ -35,7 +34,6 @@
         "items": [
             {
                 "name": "command_app",
-                "url": "../../../command_guides/touch/command_app",
                 "title": "Using Sencha Cmd with Sencha Touch",
                 "description": "How to generate applications and automate the deployment and packaging process with Sencha Cmd"
             },
@@ -196,7 +194,6 @@
         "items": [
             {
                 "name": "native_packaging",
-                "url": "../../../command_guides/touch/native_packaging",
                 "title": "Native Packaging for iOS and Android",
                 "description": "Using the Native Packager to package apps to run on iOS or Android devices"
             },
@@ -217,37 +214,31 @@
         "items": [
             {
                 "name": "command",
-                "url": "../../../command_guides/command",
                 "title": "Introduction to Sencha Cmd",
                 "description": "Introduction and overview of Sencha Cmd"
             },
             {
                 "name": "command_app",
-                "url": "../../../command_guides/touch/command_app",
                 "title": "Using Sencha Cmd with Sencha Touch",
                 "description": "How to generate applications and automate the deployment and packaging process with Sencha Cmd"
             },
             {
                 "name": "command_workspace",
-                "url": "../../../command_guides/command_workspace",
                 "title": "Workspaces in Sencha Cmd",
                 "description": "Using Sencha Cmd to develop large, multi-page, applications"
             },
             {
                 "name": "command_advanced",
-                "url": "../../../command_guides/command_advanced",
                 "title": "Advanced Sencha Cmd",
                 "description": "Advanced uses of Sencha Cmd"
             },
             {
                 "name": "command_compiler",
-                "url": "../../../command_guides/command_compiler",
                 "title": "Sencha Compiler Reference",
                 "description": "Using, configuring and getting the most from the compiler"
             },
             {
                 "name": "command_ant",
-                "url": "../../../command_guides/command_ant",
                 "title": "Ant Integration",
                 "description": "Describes the Ant Tasks available from Sencha Cmd"
             }

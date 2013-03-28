@@ -1,18 +1,16 @@
-# Using DataViews in Sencha Touch 2
+# Using DataViews in Sencha Touch
 
-{@link Ext.dataview.DataView DataView} makes it easy to create lots of components dynamically, usually based off a {@link Ext.data.Store Store}.
-It's great for rendering lots of data from your server backend or any other data source and is what powers
-components like {@link Ext.List}.
+{@link Ext.dataview.DataView DataView} makes it easy to create dynamically a number of components, usually based off a {@link Ext.data.Store Store}. It is used for rendering data from your server backend or any other data source, and it powers components such as {@link Ext.List}.
 
-Use {@link Ext.dataview.DataView DataView} whenever you want to show sets of the same component many times, for examples in apps like these:
+You can use {@link Ext.dataview.DataView DataView} whenever you want to show repeatedly sets of the same component, for example in cases such as the following:
 
-* List of messages in an email app
-* Showing latest news/tweets
-* Tiled set of albums in an HTML5 music player
+* A list of messages in an email app
+* A list of the latest news or tweets
+* A tiled set of albums in an HTML5 music player
 
 ## Creating a Simple DataView
 
-At its simplest, a {@link Ext.dataview.DataView DataView} is just a {@link Ext.data.Store Store} full of data and a simple template that we use to render each item:
+At its simplest, a {@link Ext.dataview.DataView DataView} is a {@link Ext.data.Store Store} full of data and a template that is used to render each store item, as illustrated by the following example:
 
     @example
     var touchTeam = Ext.create('Ext.DataView', {
@@ -32,33 +30,24 @@ At its simplest, a {@link Ext.dataview.DataView DataView} is just a {@link Ext.d
         itemTpl: '{name} is {age} years old'
     });
 
-Here we just defined everything inline so it's all local with nothing being loaded from a server. For each of the 5
-data items defined in our {@link Ext.data.Store Store}, {@link Ext.dataview.DataView DataView} will render a {@link Ext.Component Component} and pass in the name and age
-data. The component will use the {@link Ext.dataview.DataView#itemTpl tpl} we provided above, rendering the data in the curly bracket placeholders we
-provided.
+In this example we defined the store inline, so all data is local and therefore does not have to be loaded from a server. For each of the five data items defined in the {@link Ext.data.Store Store}, {@link Ext.dataview.DataView DataView} renders a {@link Ext.Component Component} and passes in the name and age data. The component uses the specified {@link Ext.dataview.DataView#itemTpl tpl} and renders the data inside the curly bracket placeholders.
 
-Because {@link Ext.dataview.DataView DataView} is integrated with {@link Ext.data.Store Store}, any changes to the {@link Ext.data.Store Store} are immediately reflected on the screen. For
-example, if we add a new record to the {@link Ext.data.Store Store} it will be rendered into our {@link Ext.dataview.DataView DataView}:
+Because {@link Ext.dataview.DataView DataView} is integrated with {@link Ext.data.Store Store}, any changes to the {@link Ext.data.Store Store} are immediately reflected on the screen. For example, if we added a new record to the {@link Ext.data.Store Store}, it would be rendered into our {@link Ext.dataview.DataView DataView}:
 
     touchTeam.getStore().add({
         name: 'Abe Elias',
         age: 33
     });
 
-We didn't have to manually update the {@link Ext.dataview.DataView DataView}, it's just automatically updated. The same happens if we modify one
-of the existing records in the {@link Ext.data.Store Store}:
+After adding the new record as shown in the previous code sample, we do not have to manually update the {@link Ext.dataview.DataView DataView}, since it is automatically updated. The same would happen if we modified one of the existing records in the {@link Ext.data.Store Store}:
 
     touchTeam.getStore().getAt(0).set('age', 42);
 
-This will get the first record in the {@link Ext.data.Store Store} (Jamie), change the age to 42 and automatically update what's on the
-screen.
+This will get the first record in the {@link Ext.data.Store Store} (Jamie), change his age to 42 and automatically update the screen content.
 
-## Loading data from a server
+## Loading Data from a Server
 
-We often want to load data from our server or some other web service so that we don't have to hard code it all
-locally. Let's say we want to load all of the latest tweets about Sencha Touch into a {@link Ext.dataview.DataView DataView}, and for each one
-render the user's profile picture, user name and tweet message. To do this all we have to do is modify the
-{@link Ext.dataview.DataView#store store} and {@link Ext.dataview.DataView#itemTpl itemTpl} a little:
+We often want to load data from our server or some other web service, so that we do not have to hard-code the data content locally. Let us say we wanted to load the latest tweets about Sencha Touch into a {@link Ext.dataview.DataView DataView}, and for each tweet render the user's profile picture, the user name and the tweet message. To do this we need to modify the {@link Ext.dataview.DataView#store store} and {@link Ext.dataview.DataView#itemTpl itemTpl} as follows:
 
     @example
     Ext.create('Ext.DataView', {
@@ -82,22 +71,17 @@ render the user's profile picture, user name and tweet message. To do this all w
         itemTpl: '<img src="{profile_image_url}" /><h2>{from_user}</h2><p>{text}</p>'
     });
 
-The {@link Ext.dataview.DataView DataView} no longer has hard coded data, instead we've provided a {@link Ext.data.proxy.Proxy Proxy}, which fetches
-the data for us. In this case we used a JSON-P proxy so that we can load from Twitter's JSON-P search API. We also
-specified the fields present for each tweet, and used Store's {@link Ext.data.Store#autoLoad autoLoad} configuration
-to load automatically. Finally, we configured a Reader to decode the response from Twitter, telling it to expect
-JSON and that the tweets can be found in the 'results' part of the JSON response.
+In this example, the {@link Ext.dataview.DataView DataView} no longer contains data items, instead we have provided a {@link Ext.data.proxy.Proxy Proxy}, which fetches the data. In this case we used a JSON-P proxy that loads data using Twitter's JSON-P search API. We also specified the fields present for each tweet, and used Store's {@link Ext.data.Store#autoLoad autoLoad} configuration to load the data automatically. Finally, we configured a Reader to decode the response from Twitter, indicating it to expect JSON and that the tweets are found in the 'results' part of the JSON response.
 
-The last thing we did is update our template to render the image, twitter username and message. All we need to do
-now is add a little CSS to style the list the way we want it...
+As the last operation we updated the template to render the image, the twitter username and the message. Finally, all that is still required is adding some CSS to style the list as desired.
 
 ## Styling a DataView
 
-You may have realized by now that although our {@link Ext.dataview.DataView DataView} is displaying data from our {@link Ext.data.Store Store}, it doesn't have any default styling. This is by design, but adding custom CSS is very simple. {@link Ext.dataview.DataView DataView} has two configurations so you can target your custom CSS to your view: {@link Ext.dataview.DataView#baseCls baseCls} and {@link Ext.dataview.DataView#itemCls itemCls}. {@link Ext.dataview.DataView#baseCls baseCls} is used to add a `className` around the outer element of the {@link Ext.dataview.DataView DataView}. The {@link Ext.dataview.DataView#itemCls itemCls} you provide is added onto each item that is rendered into our {@link Ext.dataview.DataView DataView}.
+You may have realized by now that although our {@link Ext.dataview.DataView DataView} is displaying data from our {@link Ext.data.Store Store}, it does not have any default styling. The lack of default styling is by design, but adding custom CSS is very simple. {@link Ext.dataview.DataView DataView} has two configurations that support targeting your custom CSS to the view: {@link Ext.dataview.DataView#baseCls baseCls} and {@link Ext.dataview.DataView#itemCls itemCls}. {@link Ext.dataview.DataView#baseCls baseCls} is used to add a `className` around the outer element of the {@link Ext.dataview.DataView DataView}. The {@link Ext.dataview.DataView#itemCls itemCls} you provide is added onto each item that is rendered into our {@link Ext.dataview.DataView DataView}.
 
-If you do *not* specify a {@link Ext.dataview.DataView#itemCls itemCls}, it will automatically take the {@link Ext.dataview.DataView#baseCls baseCls} configuration (which defaults to `x-dataview`) and prepend `-item`. So each item would have a className of `x-dataview-item`.
+If you do *not* specify an {@link Ext.dataview.DataView#itemCls itemCls}, it automatically takes the {@link Ext.dataview.DataView#baseCls baseCls} configuration (which defaults to `x-dataview`) and prepends `-item` to it. As a result, each item will have a className of `x-dataview-item`.
 
-But we before we add that configuration, we need to create our custom CSS. Here is a simple example below:
+Before adding the configuration, we need to create the custom CSS shown in the following example:
 
     .my-dataview-item {
         background: #ddd;
@@ -112,7 +96,7 @@ But we before we add that configuration, we need to create our custom CSS. Here 
         font-weight: bold;
     }
 
-Once we have that complete, we can go back to our previous Twitter example and add the {@link Ext.dataview.DataView#baseCls baseCls} configuration:
+Once the CSS is complete, we can go back to our previous Twitter example and add the {@link Ext.dataview.DataView#baseCls baseCls} configuration:
 
     @example
     Ext.create('Ext.DataView', {
@@ -144,9 +128,9 @@ Once we have that complete, we can go back to our previous Twitter example and a
 
 ## Component DataView
 
-Above we created our {@link Ext.dataview.DataView DataView} with an {@link Ext.dataview.DataView#itemTpl itemTpl}, which means each item is rendered from a {@link Ext.XTemplate template}. However, sometimes you need each item to be a component so you can provide a rich UI for your users. In Sencha Touch 2, we introduced the {@link Ext.dataview.DataView#useComponents useComponents} configuration which allows you to do just that.
+In the previous example we created a {@link Ext.dataview.DataView DataView} with an {@link Ext.dataview.DataView#itemTpl itemTpl}, which means each item is rendered from a {@link Ext.XTemplate template}. However, sometimes you need each item to be a component, so you can provide a rich UI for users. In Sencha Touch, we introduced the {@link Ext.dataview.DataView#useComponents useComponents} configuration which allows you to address this scenario.
 
-Creating a component {@link Ext.dataview.DataView DataView} is very similar to creating a normal template based {@link Ext.dataview.DataView DataView} like above, however you must define the item view used when rendering each item in your list.
+Creating a component {@link Ext.dataview.DataView DataView} is very similar to creating a normal template-based {@link Ext.dataview.DataView DataView} as previously shown, however you must define the item view used when rendering each item in your list.
 
     Ext.define('MyListItem', {
         extend: 'Ext.dataview.component.DataItem',
@@ -178,16 +162,16 @@ Creating a component {@link Ext.dataview.DataView DataView} is very similar to c
         }
     });
 
-Above is an example of how to define your component based {@link Ext.dataview.DataView DataView} item component. There are a few important notes about this:
+This example shows how to define a component-based {@link Ext.dataview.DataView DataView} item component. There are a few important notes about this example:
 
 * We must extend {@link Ext.dataview.component.DataItem} for each item. This is an abstract class which handles the record handling for each item.
-* Below the extend we require {@link Ext.Button}. This is simply because we are going to insert a {@link Ext.Button button} inside our item component.
-* We then specify the `xtype` for this item component.
-* Inside our config block we define `nameButton`. This is a custom configuration we add to this component which will be transformed into a {@link Ext.Button button} by the [class system](#!/guide/class_system). We set it to `true` by default, but this could also be a configuration block. This configuration will automatically generate getters and setters for our `nameButton`.
-* Next we define the {@link Ext.dataview.component.DataItem#dataMap dataMap}. The dataMap is a map between the data of a {@link Ext.data.Model record} and this view. The `getNameButton` is the getter for the instance you want to update; so in this case we want to get the `nameButton` configuration of this component. Then inside that block we give it the setter for that instance; in this case being `setText` and give it the field of the record we are passing. So, once this item component gets a record it will get the `nameButton` and then call `setText` with the `name` value of the record.
-* Then we define the apply method for our `nameButton`. The apply method uses {@link Ext#factory} to transform the configuration passed into an instance of {@link Ext.Button}. That instance is then returned, which will then cause `updateNameButton` to be called. The `updateNameButton` method simply removes the old nameButton instance if it exists, and adds the new nameButton instance if it exists.
+* Following the extend code we require {@link Ext.Button}, because we intend to insert a {@link Ext.Button button} inside the item component.
+* We specify the `xtype` for this item component.
+* Inside the config block we define the `nameButton` item. This custom configuration added to the component will be transformed into a {@link Ext.Button button} by the [class system](#!/guide/class_system). By default we set it to `true` , but this could also be a configuration block. This configuration automatically generates getters and setters for the `nameButton` item.
+* We define the {@link Ext.dataview.component.DataItem#dataMap dataMap}. The dataMap is a map between the data of a {@link Ext.data.Model record} and this view. The `getNameButton` is the getter for the instance you want to update; so in this case we want to get the `nameButton` configuration of this component. Inside that block we then give it the setter for that instance, `setText` in this case and give it the field of the record we are passing. As a result, once this item component gets a record, it gets the `nameButton` and then calls `setText` with the `name` value of the record.
+* Finally we define the apply method for the `nameButton` item. The apply method uses {@link Ext#factory} to transform the configuration passed into an instance of {@link Ext.Button}. That instance is then returned, which  then causes `updateNameButton` to be called. The `updateNameButton` method removes the old nameButton instance if it exists, and adds the new nameButton instance if it exists.
 
-Now we have created the item component, we can create our component {@link Ext.dataview.DataView DataView}, similar to how we done it before.
+After having created the item component, we can create the component {@link Ext.dataview.DataView DataView}, similar to previous examples.
 
     Ext.create('Ext.DataView', {
         fullscreen: true,
@@ -207,9 +191,9 @@ Now we have created the item component, we can create our component {@link Ext.d
         defaultType: 'mylistitem'
     });
 
-There are two key additions. Firstly, we add the {@link Ext.dataview.DataView#useComponents useComponents} configuration and set it to `true`. Secondly, we set the {@link Ext.dataview.DataView#defaultType defaultType} configuration to our item component `mylistitem`. This tells the {@link Ext.dataview.DataView DataView} to use our defined item component as the view for each item.
+This code has two key additions. First, we added the {@link Ext.dataview.DataView#useComponents useComponents} configuration and set it to `true`. Second, we set the {@link Ext.dataview.DataView#defaultType defaultType} configuration to the previously created `mylistitem` item component. This tells the {@link Ext.dataview.DataView DataView} to use the defined item component as the view for each item.
 
-Now if we run this code together, we can see the component {@link Ext.dataview.DataView DataView} in action.
+If we run this code together, we can see the component {@link Ext.dataview.DataView DataView} in action.
 
     @example preview
     Ext.define('MyListItem', {
@@ -260,9 +244,9 @@ Now if we run this code together, we can see the component {@link Ext.dataview.D
         defaultType: 'mylistitem'
     });
 
-The great thing about this is the flexibility it can add to your dataviews. Each item component has access to its own {@link Ext.dataview.component.DataItem#record record}, so you can do just about anything with it.
+The great benefit of this approach is the flexibility it adds to your dataviews. Since each item component has access to its own {@link Ext.dataview.component.DataItem#record record}, you can do just about anything with it.
 
-Below we add a event listener to the tap event on our `nameButton`, which will then alert the user with the age of the selected person.
+In the following example we add to the `nameButton` an event listener to the tap event, which alerts the user with the age of the selected person.
 
     Ext.define('MyListItem', {
         //...
@@ -291,7 +275,7 @@ Below we add a event listener to the tap event on our `nameButton`, which will t
         }
     });
 
-And when we add this code to our above example, we get the finished result:
+Finally, after adding this code to our previous example, we get the following finished result:
 
     @example preview
     Ext.define('MyListItem', {
