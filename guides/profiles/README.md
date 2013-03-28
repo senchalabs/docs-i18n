@@ -143,7 +143,7 @@ Usually when we define a view class we extend one of Sencha Touch's built in vie
         }
     });
 
-So we have a superclass (Mail.view.Main) and a Profile-specific subclass (Main.view.tablet.Main) which can customize any aspect of the superclass. In this case we're changing the title of the Main view from "Generic version" to "Tablet-specific version" in our subclass, so when our app launches that's what we will see.
+So we have a superclass (Mail.view.Main) and a Profile-specific subclass (Mail.view.tablet.Main) which can customize any aspect of the superclass. In this case we're changing the title of the Main view from "Generic version" to "Tablet-specific version" in our subclass, so when our app launches that's what we will see.
 
 Because these are just normal classes it's easy to customize almost any part of the superclass using the flexible config system. For example, let's say we also have a phone version of the app - we could customize its version of the Main view like this (*app/view/phone/Main.js*):
 
@@ -168,7 +168,7 @@ While the above is useful, it's more common to share certain pieces of views and
 
 To achieve this we'd start off creating the two shared sub views - the message list and the message viewer. In each case we've left the class config out for brevity:
 
-    Ext.define('Main.view.MessageList', {
+    Ext.define('Mail.view.MessageList', {
         extend: 'Ext.List',
         xtype: 'messagelist',
 
@@ -177,7 +177,7 @@ To achieve this we'd start off creating the two shared sub views - the message l
 
 And the Message Viewer:
 
-    Ext.define('Main.view.MessageViewer', {
+    Ext.define('Mail.view.MessageViewer', {
         extend: 'Ext.Panel',
         xtype: 'messageviewer',
 
@@ -186,7 +186,7 @@ And the Message Viewer:
 
 Now, to achieve our target layout the tablet Main view might do something like this:
 
-    Ext.define('Main.view.tablet.Main', {
+    Ext.define('Mail.view.tablet.Main', {
         extend: 'Ext.Container',
 
         config: {
@@ -206,7 +206,7 @@ Now, to achieve our target layout the tablet Main view might do something like t
 
 This will create a 200px wide messagelist on the left, and use the rest of the device's screen space to show the message viewer. Now let's say we want to achieve our Phone layout:
 
-    Ext.define('Main.view.phone.Main', {
+    Ext.define('Mail.view.phone.Main', {
         extend: 'Ext.Container',
 
         config: {

@@ -44,7 +44,7 @@ To show this panel on the screen now we can simply add it to the global Viewport
 
 Panels are also Containers, which means they can contain other Components, arranged by a layout. Let's revisit the above example now, this time creating a panel with two child Components and a hbox layout:
 
-	@example
+    @example
     var panel = Ext.create('Ext.Panel', {
         layout: 'hbox',
 
@@ -85,7 +85,7 @@ Whenever you create a new Component you can pass in configuration options. All o
     panel.setHtml('Some new HTML');
 
     //we can retrieve the current HTML using the getHtml method:
-    alert(panel.getHtml()); //alerts "Some new HTML"
+    Ext.Msg.alert(panel.getHtml()); //alerts "Some new HTML"
 
 Every config has a getter method and a setter method - these are automatically generated and always follow the same pattern. For example, a config called 'html' will receive getHtml and setHtml methods, a config called defaultType will receive getDefaultType and setDefaultType methods, and so on.
 
@@ -101,7 +101,7 @@ Sample usage:
     Ext.create('Ext.Container', {
         fullscreen: true,
         layout: 'fit',
-        
+
         items: [
             {
                 xtype: 'panel',
@@ -110,7 +110,7 @@ Sample usage:
             {
                 xtype: 'toolbar',
                 title: 'So is the toolbar',
-                dock: 'top'
+                docked: 'top'
             }
         ]
     });

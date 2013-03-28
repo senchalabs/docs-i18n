@@ -10,10 +10,10 @@ Events are fired whenever something interesting happens to one of your classes. 
     Ext.create('Ext.Panel', {
         html: 'My Panel',
         fullscreen: true,
-        
+
         listeners: {
             painted: function() {
-                alert('I was painted to the screen');
+                Ext.Msg.alert('I was painted to the screen');
             }
         }
     });
@@ -31,7 +31,7 @@ The painted event itself is useful in some cases but there are other events that
         xtype: 'button',
         centered: true,
         text: 'My Button',
-        
+
         listeners: {
             tap: function() {
                 alert("You tapped me");
@@ -46,7 +46,7 @@ We can add as many event listeners as we like. Here we're going to confound our 
         xtype: 'button',
         centered: true,
         text: 'My Button',
-        
+
         listeners: {
             tap: function() {
                 this.hide();
@@ -64,7 +64,7 @@ Event listeners are called every time an event is fired, so you can continue hid
 
 ## Config-driven events
 
-Most classes are reconfigurable at run time - e.g. you can change configurations like their height, width or content at any time and the Component will correctly update itself on screen. Many of these configuration changes trigger an event to be fired - for example 14 of Button's 24 events have names like {@link Ext.Button#event-widthchange widthchange}, {@link Ext.Button#event-hiddenchange hiddenchange} and {@link Ext.Button#event-centeredchange centeredchange}. 
+Most classes are reconfigurable at run time - e.g. you can change configurations like their height, width or content at any time and the Component will correctly update itself on screen. Many of these configuration changes trigger an event to be fired - for example 14 of Button's 24 events have names like {@link Ext.Button#event-widthchange widthchange}, {@link Ext.Button#event-hiddenchange hiddenchange} and {@link Ext.Button#event-centeredchange centeredchange}.
 
 This time our tap handler is just going to call this.setWidth() to set a random width on our button. Our {@link Ext.Button#event-widthchange widthchange} listener will immediately be informed of the change, along with the new and old width values:
 
@@ -73,7 +73,7 @@ This time our tap handler is just going to call this.setWidth() to set a random 
         xtype: 'button',
         centered: true,
         text: 'Click me',
-    
+
         listeners: {
             tap: function() {
                 var randomWidth = 100 + Math.round(Math.random() * 200);
@@ -98,7 +98,7 @@ Every example so far has involved passing listeners in when the class is instant
         centered: true,
         text: 'Click me'
     });
-    
+
     myButton.on('tap', function() {
         alert("Event listener attached by .on");
     });
@@ -110,14 +110,14 @@ You can add new listeners at any time this way. We can also combine these approa
         xtype: 'button',
         centered: true,
         text: 'Click me',
-        
+
         listeners: {
             tap: function() {
                 alert('First tap listener');
             }
         }
     });
-    
+
     myButton.on('tap', function() {
         alert("Second tap listener");
     });
@@ -132,7 +132,7 @@ Finally, we can specify multiple listeners using .on, just as we could with a li
         centered: true,
         text: 'Click me'
     });
-    
+
     myButton.on({
         tap: function() {
             var randomWidth = 100 + Math.round(Math.random() * 200);
@@ -154,17 +154,17 @@ We'll pass our new *doSomething* function into our listeners object, which works
     var doSomething = function() {
         alert('handler called');
     };
-    
+
     var myButton = Ext.Viewport.add({
         xtype: 'button',
         text: 'My Button',
         centered: true,
-        
+
         listeners: {
             tap: doSomething
         }
     });
-    
+
     Ext.defer(function() {
         myButton.un('tap', doSomething);
     }, 3000);
@@ -178,16 +178,16 @@ In this example we're adding a button like before, but this time also adding a t
         centered: true,
         text: 'Listener Disabled'
     });
-    
+
     var handler = function() {
         alert('listener called');
     };
-    
+
     Ext.Viewport.add({
         xtype: 'togglefield',
         docked: 'bottom',
         label: 'Toggle Listener',
-        
+
         listeners: {
             change: function(field, thumb, enabled) {
                 if (enabled) {
@@ -217,11 +217,11 @@ This time we'll create a Button and a Panel, then listen to the Button's 'tap' e
         centered: true,
         text: 'Click me'
     });
-    
+
     var panel = Ext.create('Ext.Panel', {
         html: 'Panel HTML'
     });
-    
+
     myButton.on({
         tap: {
             scope: panel,
@@ -243,7 +243,7 @@ Sometimes we only want to listen to an event one time. The event itself might fi
        xtype: 'button',
        centered: true,
        text: 'Click me',
-   
+
        listeners: {
            tap: {
                single: true,
@@ -273,7 +273,7 @@ For events that are fired many times in short succession, we can throttle the nu
            }
        }
     });
-    
+
 ## Firing Your Own Events
 
 Firing your own events is really simple - you can just call {@link Ext.mixin.Observable#fireEvent fireEvent} with any event name. In this case we'll fire an event called *myEvent* that passes two arguments - the button itself an a number between 1 and 100:
@@ -290,10 +290,10 @@ Firing your own events is really simple - you can just call {@link Ext.mixin.Obs
            }
        }
     });
-    
+
     Ext.defer(function() {
         var number = Math.ceil(Math.random() * 100);
-        
+
         myButton.fireEvent('myEvent', myButton, number);
     }, 2000);
 

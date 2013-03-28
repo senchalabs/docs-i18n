@@ -111,6 +111,11 @@
                 "name": "ajax",
                 "title": "Using AJAX",
                 "description": "While Sencha Touch's data binding means you rarely have to interact with AJAX directly, we provide several options for making AJAX requests"
+            },
+            {
+                "name": "theming",
+                "title": "Theming",
+                "description": "Customizing the interface of your Sencha Touch mobile app using CSS3 and Sass/SCSS."
             }
         ]
     },
@@ -151,11 +156,6 @@
                 "name": "navigation_view",
                 "title": "Using Navigation View",
                 "description": "Navigation Views allow you to push items into a stack of views and provides built-in back button and animation support"
-            },
-            {
-                "name": "theming",
-                "title": "Theming Sencha Touch",
-                "description": "This tutorial is perfect for beginners who want to get started customizing the interface of their Sencha Touch mobile app using CSS3 and Sass/SCSS."
             }
         ]
     },
