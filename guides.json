@@ -13,6 +13,11 @@
                 "description": "Learn what's new in Ext JS 4.0 and how to upgrade your existing applications."
             },
             {
+                "name": "upgrade_42",
+                "title": "Upgrade 4.1 to 4.2",
+                "description": "Learn what's new in Ext JS 4.2 and how to upgrade your 4.1 applications."
+            },
+            {
                 "name": "upgrade_41",
                 "title": "Upgrade 4.0 to 4.1",
                 "description": "Learn what's new in Ext JS 4.1 and how to upgrade your 4.0 applications."
@@ -71,6 +76,11 @@
                 "name": "testing",
                 "title": "Unit Testing",
                 "description": "This guide explains how to use Jasmine to unit test your projects."
+            },
+            {
+                "name": "testing_controllers",
+                "title": "Unit testing MVC Controllers",
+                "description": "This guide explains how to unit test MVC Controllers with Jasmine."
             }
         ]
     },
@@ -109,73 +119,76 @@
         "items": [
             {
                 "name": "command",
-                "url": "../../../command_guides/command",
                 "title": "Introduction to Sencha Cmd",
                 "description": "Introduction to using Sencha Cmd"
             },
             {
                 "name": "command_app",
-                "url": "../../../command_guides/command_app",
                 "title": "Using Sencha Cmd with Ext JS",
                 "description": "Using Sencha Cmd to generate and develop Ext JS applications"
             },
             {
                 "name": "command_code",
-                "url": "../../../command_guides/command_code",
                 "title": "Compiler-Friendly Code Guidelines",
                 "description": "Recommendations for getting the most from the compiler"
             },
             {
                 "name": "command_workspace",
-                "url": "../../../command_guides/command_workspace",
                 "title": "Workspaces in Sencha Cmd",
                 "description": "Using Sencha Cmd to develop large, multi-page, applications"
             },
             {
+                "name": "command_packages",
+                "title": "Sencha Cmd Packages",
+                "description": "Using Packages in your applications"
+            },
+            {
+                "name": "command_package_authoring",
+                "title": "Creating Sencha Cmd Packages",
+                "description": "How to author and distribute packages"
+            },
+            {
                 "name": "command_app_single",
-                "url": "../../../command_guides/command_app_single",
                 "title": "Single-Page Ext JS Apps",
                 "description": "Using Sencha Cmd to develop single-page, Ext JS applications"
             },
             {
                 "name": "command_app_multi",
-                "url": "../../../command_guides/command_app_multi",
                 "title": "Multi-Page Ext JS Apps",
                 "description": "Using Sencha Cmd to develop large, multi-page, Ext JS applications"
             },
             {
                 "name": "command_theme",
-                "url": "../../../command_guides/command_theme",
                 "title": "Building Themes for Ext JS",
                 "description": "Introduction to themes and the image slicer."
             },
             {
+                "name": "command_slice",
+                "title": "Image Slicing for IE",
+                "description": "Generate images for legacy browsers so they can dispaly gradients and rounded corners"
+            },
+            {
                 "name": "command_advanced",
-                "url": "../../../command_guides/command_advanced",
                 "title": "Advanced Sencha Cmd",
                 "description": "Advanced uses of Sencha Cmd"
             },
             {
                 "name": "command_compiler",
-                "url": "../../../command_guides/command_compiler",
                 "title": "Sencha Compiler Reference",
                 "description": "Using, configuring and getting the most from the compiler"
             },
             {
                 "name": "command_ant",
-                "url": "../../../command_guides/command_ant",
                 "title": "Ant Integration",
                 "description": "Describes the Ant Tasks available from Sencha Cmd"
             },
             {
                 "name": "command_compiler_meta",
-                "url": "../../../command_guides/command_compiler_meta",
                 "title": "Generating Metadata",
                 "description": "Generation and uses for code metadata"
             },
             {
                 "name": "command_reference",
-                "url": "../../../command_guides/command_reference",
                 "title": "Sencha Cmd Reference",
                 "description": "A complete command line reference"
             }

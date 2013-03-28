@@ -16,7 +16,7 @@ The Installer lets you select a destination path, but changing this can have sid
 installed in a single base folder with sub-folders named by the version number. On Windows,
 the default install folder for a single-user installation looks like this:
 
-    C:\Users\myself\bin\Sencha\Cmd\3.0.0.181\
+    C:\Users\myself\bin\Sencha\Cmd\3.1.0.236\
 
 It is highly recommended that if you change this path, you preserve the last piece (that
 is, the version number) as well as install any other versions of Sencha Cmd in that same
@@ -38,14 +38,14 @@ named by their version number and located in a common parent folder.
 Alternatively, each installed version also provides a version-specific name for Sencha Cmd.
 This can be run as follows:
 
-    sencha-3.0.0 ....
+    sencha-3.1.0 ....
 
 Finally, the installer also sets an environment variable of the form `SENCHA_CMD_3_0_0`,
 which can be used to adjust the PATH of the current console/shell, as follows.
 
 On Windows, this looks like this:
 
-    set PATH=%SENCHA_CMD_3_0_0%;%PATH%
+    set PATH=%SENCHA_CMD_3_1_0%;%PATH%
     sencha ....
 
 On OSX/Linux, this looks like this:
@@ -59,13 +59,13 @@ Any parameter that can be passed to Sencha Cmd on the command line can be set as
 configuration option in one of the configuration files discussed below. If you know the
 command line option, it is a simple matter to add that option to a configuration file.
 
-For example, to specify the `name` parameter for `sencha generate app` in the configuration,
+For example, to specify the `ignore` parameter for `sencha compile` in the configuration,
 add this line:
 
-    sencha.generate.app#name=MyApp
+    sencha.compile#ignore=attic
 
-This particular property is not meaningful to specify in a configuration file, but it serves
-to illustrate the syntax. The parts of the command that goes before the `#` are the Sencha
+This particular setting is not necessarily a recommended practice, but it just serves to
+illustrate the syntax. The parts of the command that goes before the `#` are the Sencha
 Cmd commands separated by dots. Following the `#` is the option name.
 
 To set global options (like `debug` logging), do this:
@@ -77,18 +77,29 @@ evolves.
 
 ### Configuration Files
 
-Configuration is applied in a simple cascade starting with the configuration file found
-in the Sencha Cmd folder called `"sencha.cfg"`. This contains the default configuration for
-Sencha Cmd. All properties in that file are loaded as Sencha Cmd launches.
+Similar to Apache Ant (on which many aspects of Sencha Cmd are based), configuration is
+applied in a "first-write-wins" model. This is essential to allow property values to be
+overridden by the command line.
 
-Following that base file, the framework, workspace and finally application configurations
-are loaded, overriding any commonly named properties. This is the order of configuration
-file loading:
+The process of loading configuration begins by searching from the current directory and
+proceeds up the file system until the Workspace is found. Along the way, Sencha Cmd looks
+detected the presence of an Application or Sencha Framework SDK. At the end of the loading
+process, Sencha Cmd will load any of the following files it detects in this order:
 
-  * `${cmd.dir}/sencha.cfg`
-  * `${framework.dir}/sencha.cfg`
-  * `${workspace.dir}/.sencha/workspace/sencha.cfg`
   * `${app.dir}/.sencha/app/sencha.cfg`
+  * `${workspace.dir}/.sencha/workspace/sencha.cfg`
+  * `${framework.dir}/cmd/sencha.cfg`
+  * `${cmd.dir}/sencha.cfg`
+
+This yields basically the same result as Sencha Cmd v3.0's approach which used a cascade
+that loaded the above files in reverse order but overwrote properties as it progressed.
+The key difference between Sencha Cmd v3.0 and v3.1 is that properties passed at the
+command line override those in these files. This is seen in the following command:
+
+    sencha config -prop foo=42 then ...
+
+This will set `"foo"` to 42 prior to the loading of config files, and in Sencha Cmd v3.1,
+this setting will "win".
 
 ## Command Line Details
 
@@ -104,7 +115,7 @@ starts with the letter "g", and likewise, `app` is the only command in that cate
 starts with an "a", the following commands are equivalent:
 
     sencha generate app MyApp ../MyApp
-    sencha g a MyApp ../MyApp
+    sencha gen ap MyApp ../MyApp
 
 **Important.** While this can be convenient at the console or terminal, it is not a good
 practice to use extremely short/terse prefixes in scripts. The use of such terse commands
@@ -239,7 +250,6 @@ added.
 
 The actual target names will be slightly different based on which plugin you extend. For
 specifics, consult the comments in the respective `"plugin.xml"` file.
-
 
 **Note.** The default `"plugin.xml"` file imports [Ant Contrib](http://ant-contrib.sourceforge.net/)
 which provides many [useful tasks](http://ant-contrib.sourceforge.net/tasks/tasks/index.html).
