@@ -2,8 +2,6 @@
 
 Here's a list of the new features and functionality in Sencha Touch 2.0 that were not part of the earlier versions. 
 
-*Note:* This guide is a work in progress and does not cover all new Sencha Touch 2 functionality. Check back frequently for updates. Sencha Touch 2 is currently in Developer Preview. Expect there to be bugs, missing features, and incomplete documentation.
-
 ## Welcome to Sencha Touch 2
 
 Sencha Touch was the first HTML5 mobile framework and 2.0 is its most significant upgrade. The foremost focus of the release is performance -- getting apps running fast on as many devices as possible. Apps start up much faster, provide a much snappier initial render and layout, and lay out again immediately when a device is roatated. Among the other significant enhancements:

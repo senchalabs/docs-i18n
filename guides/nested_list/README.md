@@ -149,7 +149,7 @@ Some of the items also have a `leaf` property. This means that when a user taps 
 
 ## Loading Remote Data
 
-In the above example we simply add some inline data, but when creating real world examples this is very rarely the case. What if we want to load data from a remove JSON file?
+In the above example we simply add some inline data, but when creating real world examples this is very rarely the case. What if we want to load data from a remote JSON file?
 
 It is actually very similar. Lets look at the JSON file we want to load:
 
@@ -183,14 +183,14 @@ As you can see, it is identical to the inline {@link Ext.data.TreeStore#root roo
 
     var treeStore = Ext.create('Ext.data.TreeStore', {
         model: 'ListItem',
-        defaultRootProperty: 'items'
+        defaultRootProperty: 'items',
         proxy: {
             type: 'ajax',
             url: 'data.json'
         }
     });
 
-We create the store using {@link Ext#create Ext.create} and then we set the `model` and `defaultRootProperty` properties just like before, but then, this time, we set a `proxy`. This property tells the {@link Ext.data.TreeStore TreeStore} to load its data using a specify proxy. In this case we give it a `type` of **ajax** (because it is loading a remote file) and then `url` of where the JSON file is. Simple.
+We create the store using {@link Ext.ClassManager#create Ext.create} and then we set the `model` and `defaultRootProperty` properties just like before, but then, this time, we set a `proxy`. This property tells the {@link Ext.data.TreeStore TreeStore} to load its data using a specify proxy. In this case we give it a `type` of 'ajax' (because it is loading a remote file) and then `url` of where the JSON file is. Simple.
 
 ## Detail Cards
 
@@ -270,15 +270,15 @@ What if we want to set the data in the {@link Ext.NestedList#detailCard detailCa
         }
     });
 
-Look how we added the {@link Ext.NestedList#listeners listeners} config. We do this because we want to listen to the **{@link Ext.NestedList#event-leafitemtap leafitemtap}** event, which is called when any leaf item is... tapped. :)
+Look how we added the {@link Ext.NestedList#listeners listeners} config. We do this because we want to listen to the **{@link Ext.NestedList#event-leafitemtap leafitemtap}** event, which is called when any leaf item is tapped.
 
 When that event is fired, it is passed a number of arguments:
 
-* **nestedList** - this is a reference to the {@link Ext.NestedList nested list} instance.
-* **list** - this is a reference to the last {@link Ext.dataview.List list}, where the item with the `leaf` config was tapped.
-* **index** - the index of the {@link Ext.data.Model record} in the {@link Ext.dataview.List list} {@link Ext.dataview.List#store store}.
-* **target** - the {@link Ext.dom.Element element} which was tapped.
-* **record** - the {@link Ext.data.Model record} of the item which was tapped.
+* `nestedList` - this is a reference to the {@link Ext.NestedList nested list} instance.
+* `list` - this is a reference to the last {@link Ext.dataview.List list}, where the item with the `leaf` config was tapped.
+* `index` - the index of the {@link Ext.data.Model record} in the {@link Ext.dataview.List list} {@link Ext.dataview.List#store store}.
+* `target` - the {@link Ext.dom.Element element} which was tapped.
+* `record` - the {@link Ext.data.Model record} of the item which was tapped.
 
 Now that we know when someone taps a `leaf` item, and we know which `record` was tapped, we can update the {@link Ext.NestedList#detailCard detail card} with some data.
 
@@ -410,8 +410,8 @@ Lets look at an example of this in action:
 
 As you can see, we have 2 items in the Viewport now.
 
-* The {@link Ext.NestedList nested list}.
-* A new container which we specify as the {@link Ext.NestedList#detailContainer detailContainer}.
+- The {@link Ext.NestedList nested list}.
+- A new container which we specify as the {@link Ext.NestedList#detailContainer detailContainer}.
 
 Setting the configuration is very simple. You just give it a reference to the container you want to use as the {@link Ext.NestedList#detailContainer detail container}:
 

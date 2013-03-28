@@ -14,7 +14,7 @@ First, you'll need to download the free [Sencha Touch 2 SDK](http://www.sencha.c
  - A web server running locally on your computer
  - A modern web browser; [Chrome](https://www.google.com/chrome) and [Safari](http://www.apple.com/safari/download/) are recommended
 
- If you are running IIS on Windows, please note that you must add `application/x-json` as a MIME Type for Sencha Touch to work properly. You can find out how to do that here: http://stackoverflow.com/a/1121114/273985
+ If you are running IIS on Windows, please note that you must add `application/x-json` as a MIME Type for Sencha Touch to work properly. You can find out how to do that here: [http://stackoverflow.com/a/1121114/273985](http://stackoverflow.com/a/1121114/273985).
 
 ## Installation
 
@@ -32,7 +32,7 @@ change to your Sencha Touch directory and type the `sencha` command. For example
     Copyright (c) 2012 Sencha Inc.
     ...
 
-**NOTE**: You **must** be inside either the downloaded SDK directory or a generated Touch app when using the **`sencha`** command.
+__Note:__ You **must** be inside either the downloaded SDK directory or a generated Touch app when using the **`sencha`** command.
 
 ## Generating your first app
 
@@ -101,7 +101,7 @@ Now refresh the app in your browser to see your changes:
 
 ## Next Steps
 
-The next step is to follow the <a href="#!/guide/first_app">First Application guide</a>, which builds on what you've
+The next step is to follow the [First Application guide](#!/guide/first_app), which builds on what you've
 just done and guides your through creating a simple but powerful app in around 15 minutes. You can also follow along
 with the video at the top of this guide.
 

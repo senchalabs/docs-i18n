@@ -1,6 +1,6 @@
 # Routing, Deep Linking and the Back Button
 
-Sencha Touch 2 comes with fully history and deep-linking support. This gives your web applications 2 massive benefits:
+Sencha Touch 2 comes with fully history and deep-linking support. This gives your web applications two massive benefits:
 
 * The back button works inside your apps, navigating correctly and quickly between screens without refreshing the page
 * Deep-linking enables your users to send a link to any part of the app and have it load the right screen
@@ -27,7 +27,7 @@ Setting up history support for your apps is pretty straightforward and is center
 
 By specifying the {@link Ext.app.Controller#routes routes} above, the Main controller will be notified whenever the browser url looks like "#products/123". For example, if your application is deployed onto http://myapp.com, any url that looks like http://myapp.com/#products/123, http://myapp.com/#products/456 or http://myapp.com/#products/abc will automatically cause your showProduct function to be called.
 
-When the showProduct function is called this way, it is passed the 'id' token that was parsed out of the url. This happens because we used ':id' in the route - whenever a route contains a ':' it will attempt to pull that information out of the url and pass it into your function. Note that these parsed tokens are always strings (because urls are always strings themselves), so hitting a route like 'http://myapp.com/#products/456' is the same as calling showProduct('456').
+When the showProduct function is called this way, it is passed the 'id' token that was parsed out of the url. This happens because we used ':id' in the route - whenever a route contains a ':' it will attempt to pull that information out of the url and pass it into your function. Note that these parsed tokens are always strings (because urls are always strings themselves), so hitting a route like 'http://myapp.com/#products/456' is the same as calling `showProduct('456')`.
 
 You can specify any number of routes and your routes can each have any number of tokens - for example:
 
@@ -80,7 +80,7 @@ Sometimes though we want the route to be able to match urls like this, for examp
         }
     });
 
-So instead of an action string we now have a configuration object that contains an 'action' property. In addition, we added a {@link Ext.app.Route#conditions conditions} configuration which tells the :filename token to match any sequence of numbers and letters, along with a period ('.'). This means our route will now match urls like http://myapp.com/#file/someFile.jpg, passing 'someFile.jpg' in as the argument to the Controller's showFile function.
+So instead of an action string we now have a configuration object that contains an 'action' property. In addition, we added a {@link Ext.app.Route#conditions conditions} configuration which tells the :filename token to match any sequence of numbers and letters, along with a period ('.'). This means our route will now match urls like http://myapp.com/#file/someFile.jpg, passing 'someFile.jpg' in as the argument to the Controller's `showFile` function.
 
 ## Restoring State
 
@@ -128,7 +128,7 @@ Each app will need different logic when it comes to restoring state for a deeply
 
 ## Sharing urls across Device Profiles
 
-In most cases you'll want to share the exact same route structure between your <a href="#!/guide/profiles">Device Profiles</a>. This way a user using your Phone version can send their current url to a friend using a Tablet and expect that their friend will be taken to the right place in the Tablet app. This generally means it's best to define your route configurations in the superclass of the Phone and Tablet-specific Controllers:
+In most cases you'll want to share the exact same route structure between your [Device Profiles](#!/guide/profiles). This way a user using your Phone version can send their current url to a friend using a Tablet and expect that their friend will be taken to the right place in the Tablet app. This generally means it's best to define your route configurations in the superclass of the Phone and Tablet-specific Controllers:
 
     Ext.define('MyApp.controller.Products', {
         extend: 'Ext.app.Controller',
@@ -140,7 +140,7 @@ In most cases you'll want to share the exact same route structure between your <
         }
     });
 
-Now in your Phone-specific subclass you can just implement the showProduct function to give a Phone-specific view for the given product:
+Now in your Phone-specific subclass you can just implement the `showProduct` function to give a Phone-specific view for the given product:
 
     Ext.define('MyApp.controller.phone.Products', {
         extend: 'MyApp.controller.Products',

@@ -24,14 +24,21 @@
             },
             {
                 "name": "command",
-                "title": "Sencha Command",
-                "description": "How to generate applications and automate the deployment and packaging process with Sencha Command"
+                "url": "../../../command_guides/command",
+                "title": "Introduction to Sencha Cmd",
+                "description": "Introduction and overview of Sencha Cmd"
             }
         ]
     },
     {
         "title": "Writing Applications",
         "items": [
+            {
+                "name": "command_app",
+                "url": "../../../command_guides/touch/command_app",
+                "title": "Using Sencha Cmd with Sencha Touch",
+                "description": "How to generate applications and automate the deployment and packaging process with Sencha Cmd"
+            },
             {
                 "name": "first_app",
                 "title": "Building your First App",
@@ -67,11 +74,6 @@
                 "title": "Dependencies and MVC",
                 "description": "There are several options when it comes to declaring app dependencies. This guide shows you what's possible."
             }
-            // {
-            //     "name": "testing_mvc",
-            //     "title": "Testing Apps",
-            //     "description": "Provides advice and pointers on how to successfully unit test Sencha Touch 2 applications"
-            // },
         ]
     },
     {
@@ -138,6 +140,11 @@
                 "description": "Carousels allow you to swipe between screens and work well on tablets and phone screens"
             },
             {
+                "name": "drawing_and_charting",
+                "title": "Using Chart",
+                "description": "Chart allow you to create interactive data visualizations"
+            },
+            {
                 "name": "list",
                 "title": "Using List",
                 "description": "Lists are great at showing lots of information, and pack loads of functionality in out of the box. Find out how to use them here"
@@ -189,8 +196,9 @@
         "items": [
             {
                 "name": "native_packaging",
-                "title": "Native iOS Packaging",
-                "description": "Native Packaging for iOS on Mac"
+                "url": "../../../command_guides/touch/native_packaging",
+                "title": "Native Packaging for iOS and Android",
+                "description": "Using the Native Packager to package apps to run on iOS or Android devices"
             },
             {
                 "name": "native_provisioning",
@@ -198,14 +206,50 @@
                 "description": "Provisioning iOS devices"
             },
             {
-                "name": "native_android",
-                "title": "Native Android Packaging",
-                "description": "Native Packaging for Android on Mac"
-            },
-            {
                 "name": "native_apis",
                 "title": "Using Native APIs",
                 "description": "The Ext.device API exposes powerful native APIs like camera support, orientation awareness and native notifications"
+            }
+        ]
+    },
+    {
+        "title": "Sencha Cmd",
+        "items": [
+            {
+                "name": "command",
+                "url": "../../../command_guides/command",
+                "title": "Introduction to Sencha Cmd",
+                "description": "Introduction and overview of Sencha Cmd"
+            },
+            {
+                "name": "command_app",
+                "url": "../../../command_guides/touch/command_app",
+                "title": "Using Sencha Cmd with Sencha Touch",
+                "description": "How to generate applications and automate the deployment and packaging process with Sencha Cmd"
+            },
+            {
+                "name": "command_workspace",
+                "url": "../../../command_guides/command_workspace",
+                "title": "Workspaces in Sencha Cmd",
+                "description": "Using Sencha Cmd to develop large, multi-page, applications"
+            },
+            {
+                "name": "command_advanced",
+                "url": "../../../command_guides/command_advanced",
+                "title": "Advanced Sencha Cmd",
+                "description": "Advanced uses of Sencha Cmd"
+            },
+            {
+                "name": "command_compiler",
+                "url": "../../../command_guides/command_compiler",
+                "title": "Sencha Compiler Reference",
+                "description": "Using, configuring and getting the most from the compiler"
+            },
+            {
+                "name": "command_ant",
+                "url": "../../../command_guides/command_ant",
+                "title": "Ant Integration",
+                "description": "Describes the Ant Tasks available from Sencha Cmd"
             }
         ]
     }

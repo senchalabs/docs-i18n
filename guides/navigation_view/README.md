@@ -49,7 +49,7 @@ The easiest way to demonstrate this is with an example:
 
 ## Creating a simple Navigation View
 
-Creating a Navigation View is just like creating other containers. You use {@link Ext#create} to create your Navigation View instance, and the only configuration you need to add is {@link Ext.navigation.View#cfg-items items}.
+Creating a Navigation View is just like creating other containers. You use {@link Ext.ClassManager#create} to create your Navigation View instance, and the only configuration you need to add is {@link Ext.navigation.View#cfg-items items}.
 
     @example
     var view = Ext.create('Ext.navigation.View', {

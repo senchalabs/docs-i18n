@@ -181,7 +181,9 @@ Models have rich support for validating their data. To demonstrate this we're go
         extend: 'Ext.data.Model',
 
         config: {
-            fields: ...,
+            fields: [
+                // ...
+            ],
 
             validations: [
                 { type: 'presence',  field: 'name' },
@@ -191,7 +193,9 @@ Models have rich support for validating their data. To demonstrate this we're go
                 { type: 'exclusion', field: 'name', list: ['admin'] }
             ],
 
-            proxy: ...
+            proxy: [
+                // ...
+            ]
         }
     });
 

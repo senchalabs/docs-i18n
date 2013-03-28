@@ -215,9 +215,9 @@ axis. The example below illustrates the difference.
                         xtype: 'segmentedbutton',
                         allowDepress: false,
                         items: [
-                            { text: 'Start',  handler: function() { layout.setPack('start') }, pressed: true },
-                            { text: 'Center', handler: function() { layout.setPack('center') } },
-                            { text: 'End',    handler: function() { layout.setPack('end') } }
+                            { text: 'Start',  handler: function() { layout.setPack('start'); }, pressed: true },
+                            { text: 'Center', handler: function() { layout.setPack('center'); } },
+                            { text: 'End',    handler: function() { layout.setPack('end'); } }
                         ]
                     }
                 ]
@@ -284,9 +284,9 @@ axis. The example below illustrates the difference.
                         xtype: 'segmentedbutton',
                         allowDepress: false,
                         items: [
-                            { text: 'Start',  handler: function() { layout.setPack('start') }, pressed: true },
-                            { text: 'Center', handler: function() { layout.setPack('center') } },
-                            { text: 'End',    handler: function() { layout.setPack('end') } }
+                            { text: 'Start',  handler: function() { layout.setPack('start'); }, pressed: true },
+                            { text: 'Center', handler: function() { layout.setPack('center'); } },
+                            { text: 'End',    handler: function() { layout.setPack('end'); } }
                         ]
                     }
                 ]

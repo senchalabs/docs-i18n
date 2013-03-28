@@ -69,7 +69,7 @@ We're just using the browser's built in confirm function, which opens a dialog a
 
 If we make a new Bob and try to change his name, but then click No when prompted, his name won't change after all:
 
-    var bob = Ext.create('Person', {
+    var bob = Ext.create('Human', {
         name: 'Bob'
     });
 
@@ -89,7 +89,7 @@ The apply function is also a great place where you should *transform* your value
 
 The other config method is update. The update method (`updateName()` in this case) is only called when the value of the config **changes**. So in the following case, `updateName()` would *not* be called:
 
-    var bob = Ext.create('Person', {
+    var bob = Ext.create('Human', {
         name: 'Bob'
     });
 
@@ -108,7 +108,7 @@ So when we use the update method, the config is changing. This should be the pla
 Bare in mind that the update and apply methods get called on component instantiation too, so in the following example, we would get 2 alerts:
 
     // creating this will cause the name config to update, therefor causing the alert
-    var bob = Ext.create('Person', {
+    var bob = Ext.create('Human', {
         name: 'Bob'
     });
 
@@ -142,7 +142,7 @@ When you create a class in this way, Sencha Touch checks to see if `Ext.MessageB
 
 `Ext.MessageBox` itself may also have classes it depends on, which are then also loaded automatically in the background. Once all the required classes are loaded, the Human class is defined and you can start using `Ext.create` to instantiate people. This works well in development mode as it means you don't have to manage the loading of all your scripts yourself, but not as well in production because loading files one by one over an internet connection is rather slow.
 
-In production, we really want to load just one JavaScript file, ideally containing only the classes that our application actually uses. This is really easy in Sencha Touch 2 using the JSBuilder tool, which analyzes your app and creates a single file build that contains all of your classes and only the framework classes your app actually uses. See the <a href="#!/guide/building">Building guide</a> for details on how to use the JSBuilder.
+In production, we really want to load just one JavaScript file, ideally containing only the classes that our application actually uses. This is really easy in Sencha Touch 2 using the JSBuilder tool, which analyzes your app and creates a single file build that contains all of your classes and only the framework classes your app actually uses. See the [Building guide](#!/guide/building) for details on how to use the JSBuilder.
 
 Each approach has its own pros and cons, but can we have the good parts of both without the bad, too? The answer is yes, and we've implemented the solution in Sencha Touch 2.
 
@@ -224,13 +224,17 @@ Class property names follow the same convention as method and variable names, ex
 
 If you've developed with Sencha Touch 1.x, you are certainly familiar with `Ext.extend` to create a class:
 
-    var MyPanel = Ext.extend(Object, { ... });
+    var MyPanel = Ext.extend(Object, {
+        // ...
+    });
 
 This approach is easy to follow when creating a new class that inherits from another. Other than direct inheritance, however, there wasn't a fluent API for other aspects of class creation, such as configuration, statics, and mixins. We will be reviewing these items in detail shortly.
 
 Let's take a look at another example:
 
-    My.cool.Panel = Ext.extend(Ext.Panel, { ... });
+    My.cool.Panel = Ext.extend(Ext.Panel, {
+        // ...
+    });
 
 In this example we want to namespace our new class and make it extend from `Ext.Panel`. There are two concerns we need to address:
 
@@ -240,7 +244,9 @@ In this example we want to namespace our new class and make it extend from `Ext.
 The first item is usually solved with `Ext.namespace` (aliased by `Ext.ns`). This method recursively traverses through the object/property tree and creates them if they don't exist yet. The boring part is you need to remember adding them above `Ext.extend` all the time, like this:
 
     Ext.ns('My.cool');
-    My.cool.Panel = Ext.extend(Ext.Panel, { ... });
+    My.cool.Panel = Ext.extend(Ext.Panel, {
+        // ...
+    });
 
 The second issue, however, is not easy to address because `Ext.Panel` might depend on many other classes that it directly/indirectly inherits from, and in turn, these dependencies might depend on other classes to exist. For that reason, applications written before Sencha Touch 2 usually include the whole library in the form of `ext-all.js` even though they might only need a small portion of the framework.
 
@@ -273,7 +279,7 @@ Let's look at each part of this:
     });
 
     var aaron = Ext.create('My.sample.Person', 'Aaron');
-        aaron.eat("Salad"); // alert("Aaron is eating: Salad");
+    aaron.eat("Salad"); // alert("Aaron is eating: Salad");
 
 Note we created a new instance of `My.sample.Person` using the `Ext.create()` method.  We could have used the `new` keyword (`new My.sample.Person()`). However it is recommended that you always use `Ext.create` since it allows you to take advantage of dynamic loading. For more info on dynamic loading see the [Getting Started guide](#/guide/getting_started)
 

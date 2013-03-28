@@ -51,7 +51,7 @@ Although each Controller is a subclass of Ext.app.Controller, each one is instan
 
 Here's how we might quickly define the Sessions controller described above. We're using 2 Controller configurations here - {@link Ext.app.Controller#refs refs} and {@link Ext.app.Controller#cfg-control control}. Refs are an easy way to find Components on your page - in this case the Controller will look for all Components that match the {@link Ext.form.Panel formpanel} xtype and assign the first one it finds to the *loginForm* property. We'll use that property in the doLogin function later.
 
-The second thing it does is set up a {@link Ext.app.Controller#cfg-control control} configuration. Just like refs, this uses a {@link Ext.ComponentQuery ComponentQuery} selector to find all *formpanel* xtypes that contain a *button* inside them (for example, this will find the Submit button in our hypothetical login form). Whenever any button of this type fires its {@link Ext.Button#tap tap} event, our Controller's *doLogin* function will be called:
+The second thing it does is set up a {@link Ext.app.Controller#cfg-control control} configuration. Just like refs, this uses a {@link Ext.ComponentQuery ComponentQuery} selector to find all *formpanel* xtypes that contain a *button* inside them (for example, this will find the Submit button in our hypothetical login form). Whenever any button of this type fires its {@link Ext.Button#tap tap} event, our Controller's `doLogin` function will be called:
 
     Ext.define('MyApp.controller.Sessions', {
         extend: 'Ext.app.Controller',
@@ -75,15 +75,15 @@ The second thing it does is set up a {@link Ext.app.Controller#cfg-control contr
         }
     });
 
-The doLogin function itself is quite straightforward. Because we defined a 'loginForm' ref, the Controller automatically generates a *getLoginForm* function that returns the *formpanel* that it matches. Once we have that form reference we just pull the values (username and password) out of it and pass them to an *authenticate* function. That's most of what Controllers ever do - listen for events fired (usually by the UI) and kick off some action - in this case authenticating.
+The doLogin function itself is quite straightforward. Because we defined a `loginForm` ref, the Controller automatically generates a `getLoginForm` function that returns the *formpanel* that it matches. Once we have that form reference we just pull the values (username and password) out of it and pass them to an *authenticate* function. That's most of what Controllers ever do - listen for events fired (usually by the UI) and kick off some action - in this case authenticating.
 
-For more on what Controllers are and what capabilities they possess see the <a href="#!/guide/controllers">controllers guide</a>.
+For more on what Controllers are and what capabilities they possess see the [controllers guide](#!/guide/controllers).
 
 ## Stores
 
 Stores are an important part of Sencha Touch and power most of the data-bound widgets. At its simplest, a Store is not much more than an array of Model instances. Data-bound Components like {@link Ext.List List} and {@link Ext.DataView DataView} just render one item for each Model instance in the Store. As Model instances are added or removed from the Store events are fired, which the data-bound Components listen to and use to update themselves.
 
-While the <a href="#!/guide/stores">Stores guide</a> has much more information on what Stores are and how they fit in with Components in your app, there are a couple of specific integration points with your {@link Ext.app.Application Application} instance that you should be aware of.
+While the [Stores guide](#!/guide/stores) has much more information on what Stores are and how they fit in with Components in your app, there are a couple of specific integration points with your {@link Ext.app.Application Application} instance that you should be aware of.
 
 ## Device Profiles
 
@@ -91,13 +91,13 @@ Sencha Touch operates across a wide range of devices with differing capabilities
 
 Device Profiles are simple classes that enable you to define the different types of devices supported by your app and how they should be handled differently. They are opt-in, so you can develop your app without profiles at first and add them in later, or never use them at all.Each profile simply defines an {@link Ext.app.Profile#isActive isActive} function that should return true if that profile should be active on the current device, plus a set of additional *{@link Ext.app.Profile#models models}*, *{@link Ext.app.Profile#views views}* and *{@link Ext.app.Profile#controllers controllers}* to load if that profile is detected.
 
-To app Profile support to your app you just need to tell your Application about those Profiles and then create Ext.app.Profile subclasses for them:
+To app Profile support to your app you just need to tell your Application about those Profiles and then create {@link Ext.app.Profile} subclasses for them:
 
 	Ext.application({
 		name: 'MyApp',
-		profiles: ['Phone', 'Tablet'],
+		profiles: ['Phone', 'Tablet']
 
-		//as before
+		// as before
 	});
 
 By defining the profiles above the Application will load app/profile/Phone.js and app/profile/Tablet.js. Let's say that the tablet version of the app enables additional capabilities - for example managing groups. Here's an example of how we might define the Tablet profile:
@@ -118,7 +118,7 @@ By defining the profiles above the Application will load app/profile/Phone.js an
 
 The isActive function will return true whenever the application is run on what Sencha Touch determines to be a tablet. This is a slightly subjective determination because there is a near-continuous spectrum of device shapes and sizes with no clear cutoff between phones and tablets. Because there is no foolproof way to state which devices are tablets and which are phones, Sencha Touch's *Ext.os.is.Tablet* is set to true when running on an iPad and false otherwise. If you need more fine grained control it's easy to provide any implementation you like inside your *isActive* function, so long as it returns true or false.
 
-You should make sure that only one of your Profiles returns true from its isActive function. If more than one of them returns true, only the first one that does so will be counted and the rest ignored. The first one that returns true will be set as the Application's {@link Ext.app.Application#currentProfile currentProfile}, which can be queried at any time.
+You should make sure that only one of your Profiles returns true from its `isActive` function. If more than one of them returns true, only the first one that does so will be counted and the rest ignored. The first one that returns true will be set as the Application's {@link Ext.app.Application#currentProfile currentProfile}, which can be queried at any time.
 
 If the detected currentProfile has defined additional models, views, controllers and stores these will be automatically loaded by the Application, along with all of the *{@link Ext.app.Application#models models}*, *{@link Ext.app.Application#views views}* and *{@link Ext.app.Application#controllers controllers}* defined on the Application itself. However, all of the dependencies named in the Profile will be prepended with the Profile name unless the fully-qualified class name is provided. For example:
 
@@ -126,7 +126,7 @@ If the detected currentProfile has defined additional models, views, controllers
 * *controllers: ['Groups']* will load *app/controller/tablet/Groups.js*
 * *models: ['MyApp.model.Group']* will load *app/model/Group.js*
 
-Most of the time a Profile will only define additional controllers and views as the models and stores are typically shared between all variants of the app. For a more detailed discussion of Profiles see the <a href="#!/guide/profiles">device profiles guide</a>.
+Most of the time a Profile will only define additional controllers and views as the models and stores are typically shared between all variants of the app. For a more detailed discussion of Profiles see the [device profiles guide](#!/guide/profiles).
 
 ## Launch Process
 
@@ -157,8 +157,8 @@ Restoring State -->
 
 There are several more guides on using the application architecture with Sencha Touch 2:
 
-* <a href="#!/guide/controllers">Controllers</a>
-* <a href="#!/guide/profiles">Device Profiles</a>
-<!-- * <a href="#!/guide/history_support">History Support</a> -->
-<!-- * <a href="#!/guide/views">Views</a> -->
-<!-- * <a href="#!/guide/testing_mvc">Testing Applications</a> -->
+* [Controllers](#!/guide/controllers)
+* [Device Profiles](#!/guide/profiles)
+<!-- * [History Support](#!/guide/history_support) -->
+<!-- * [Views](#!/guide/views) -->
+<!-- * [Testing Applications](#!/guide/testing_mvc) -->

@@ -19,15 +19,21 @@ You can detect the operating system your application is running on using `Ext.os
 
 You can also use the `Ext.os.is` singleton to check if the current OS mataches a certain operating system. For example, if you wanted to check if the current OS is Android, you could do:
 
-    if (Ext.os.is.Android) { ... }
+    if (Ext.os.is.Android) {
+        // ...
+    }
 
 You can do this will any of the above values:
 
-    if (Ext.os.is.MacOS) { ... }
+    if (Ext.os.is.MacOS) {
+        // ...
+    }
 
 You can also use it to detect if the device is an iPhone, iPad or iPod using `Ext.os.is`:
 
-    if (Ext.os.is.iPad) { ... }
+    if (Ext.os.is.iPad) {
+        // ...
+    }
 
 The version of the OS can be also accessed using `Ext.os.version`:
 
@@ -49,7 +55,9 @@ You can also find information about the browser you are running your application
 
 You can also use `Ext.browser.is` to check if the current browser is one of the above values:
 
-    if (Ext.browser.is.Chrome) { ... }
+    if (Ext.browser.is.Chrome) {
+        // ...
+    }
 
 The `Ext.browser.is` singleton also has other useful information about the current browser that may be useful for your application:
 
@@ -61,29 +69,31 @@ The `Ext.browser.is` singleton also has other useful information about the curre
 
 ## Features
 
-You can use the {@link Ext.feature.has} singleton to check if a certain browser feature exists. For example, if you want to check if the browser supports canvas, you check do the following:
+You can use the {@link Ext.feature} singleton to check if a certain browser feature exists. For example, if you want to check if the browser supports canvas, you check do the following:
 
-    if (Ext.feature.has.Canvas) { ... }
+    if (Ext.feature.has.Canvas) {
+        // ...
+    }
 
-The list of available *features* are:
+The available *features* are:
 
-- {@link Ext.feature.has#Audio Audio}
-- {@link Ext.feature.has#Canvas Canvas}
-- {@link Ext.feature.has#ClassList ClassList}
-- {@link Ext.feature.has#CreateContextualFragment CreateContextualFragment}
-- {@link Ext.feature.has#Css3dTransforms Css3dTransforms}
-- {@link Ext.feature.has#CssAnimations CssAnimations}
-- {@link Ext.feature.has#CssTransforms CssTransforms}
-- {@link Ext.feature.has#CssTransitions CssTransitions}
-- {@link Ext.feature.has#DeviceMotion DeviceMotion}
-- {@link Ext.feature.has#Geolocation Geolocation}
-- {@link Ext.feature.has#History History}
-- {@link Ext.feature.has#Orientation Orientation}
-- {@link Ext.feature.has#OrientationChange OrientationChange}
-- {@link Ext.feature.has#Range Range}
-- {@link Ext.feature.has#SqlDatabase SqlDatabase}
-- {@link Ext.feature.has#Svg Svg}
-- {@link Ext.feature.has#Touch Touch}
-- {@link Ext.feature.has#Video Video}
-- {@link Ext.feature.has#Vml Vml}
-- {@link Ext.feature.has#WebSockets WebSockets}
+- Ext.feature.has.Audio
+- Ext.feature.has.Canvas
+- Ext.feature.has.ClassList
+- Ext.feature.has.CreateContextualFragment
+- Ext.feature.has.Css3dTransforms
+- Ext.feature.has.CssAnimations
+- Ext.feature.has.CssTransforms
+- Ext.feature.has.CssTransitions
+- Ext.feature.has.DeviceMotion
+- Ext.feature.has.Geolocation
+- Ext.feature.has.History
+- Ext.feature.has.Orientation
+- Ext.feature.has.OrientationChange
+- Ext.feature.has.Range
+- Ext.feature.has.SqlDatabase
+- Ext.feature.has.Svg
+- Ext.feature.has.Touch
+- Ext.feature.has.Video
+- Ext.feature.has.Vml
+- Ext.feature.has.WebSockets

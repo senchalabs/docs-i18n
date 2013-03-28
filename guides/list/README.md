@@ -6,13 +6,13 @@ Sencha Touch provides a list component which is ideal for presenting an index-st
 
 This tutorial features the new NavigationView and MVC Support built into Sencha Touch 2.
 
-View source code on GitHub: <a href="http://github.com/senchalearn/Presidents">github.com/senchalearn/Presidents</a>
+View source code on GitHub: [http://github.com/senchalearn/Presidents](http://github.com/senchalearn/Presidents)
 
-Live demo: <a href="http://senchalearn.github.com/Presidents/">senchalearn.github.com/Presidents/</a>
+Live demo: [http://senchalearn.github.com/Presidents/](http://senchalearn.github.com/Presidents/)
 
 ## Guide
 
-List is a component that renders a {@link Ext.data.Store Store} as a list of items on the page. It's a subclass of {@link Ext.dataview.DataView DataView}, which gives it most of its capabilities ([see DataView guide](#/guide/dataview)). List adds a few capabilities of its own though:
+List is a component that renders a {@link Ext.data.Store Store} as a list of items on the page. It's a subclass of {@link Ext.dataview.DataView DataView}, which gives it most of its capabilities (see [DataView guide](#/guide/dataview)). List adds a few capabilities of its own though:
 
 * Grouping of items, optional index bar, pinned headers
 * Optional disclosure icons on each item
@@ -43,9 +43,9 @@ This will just render one {@link Ext.dataview.component.DataItem DataItem} for e
 			select: function(view, record) {
 				Ext.Msg.alert('Selected!', 'You selected ' + record.get('name'));
 			}
-		},
+		}
 
-		//store and itemConfig as before
+		// store and itemConfig as before
 	});
 
 ### Preview
@@ -72,20 +72,6 @@ This will just render one {@link Ext.dataview.component.DataItem DataItem} for e
 			}
 		}
 	});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

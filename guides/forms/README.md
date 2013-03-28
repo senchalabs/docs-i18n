@@ -41,7 +41,7 @@ Most apps that require user input will make use of forms. Forms in Sencha Touch 
                         name: 'Ed',
                         email: 'ed@sencha.com',
                         password: 'secret'
-                    })
+                    });
                 }
             },
             {
@@ -123,7 +123,7 @@ Getting data out of the form panel is simple and is usually achieve vai the {@li
 
     var values = form.getValues();
 
-    //values now looks like this:
+    // values now looks like this:
     {
         name: 'Ed',
         email: 'ed@sencha.com',
@@ -140,7 +140,9 @@ It's also possible to listen to the change events on individual fields to get mo
                 }
             }
         },
-        items: //as before
+        items: [
+            // as before
+        ]
     });
 
 The above used a new capability of Touch 2.0, which enables you to specify listeners on child components of any container. In this case, we attached a listener to the {@link Ext.field.Text#change change} event of each form field that is a direct child of the form panel. Our listener gets the name of the field that fired the change event, and updates our {@link Ext.data.Model Model} instance with the new value. For example, changing the email field in the form will update the Model's email field.

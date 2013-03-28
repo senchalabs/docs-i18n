@@ -17,7 +17,7 @@ For now, here's how we can make an AJAX request to load data form a url on our d
 
     Ext.Ajax.request({
         url: 'myUrl',
-        callback: function(response) {
+        callback: function(options, success, response) {
             console.log(response.responseText);
         }
     });
@@ -36,7 +36,7 @@ setting params to be sent in the url. First let's see how to set the method so w
         url: 'myUrl',
         method: 'POST',
 
-        callback: function(response) {
+        callback: function(options, success, response) {
             console.log(response.responseText);
         }
     });
@@ -51,7 +51,7 @@ Sending parameters is also easy:
             password: 'not a good place to put a password'
         },
 
-        callback: function(response) {
+        callback: function(options, success, response) {
             console.log(response.responseText);
         }
     });
@@ -71,7 +71,7 @@ automatically escaped and appended to the url for us:
             password: 'bad place for a password'
         },
 
-        callback: function(response) {
+        callback: function(options, success, response) {
             console.log(response.responseText);
         }
     });
@@ -98,7 +98,7 @@ If you want to turn this behavior off, we can just set disableCaching to false:
             password: 'bad place for a password'
         },
 
-        callback: function(response) {
+        callback: function(options, success, response) {
             console.log(response.responseText);
         }
     });
@@ -121,7 +121,7 @@ can ask it for JSON like this:
             "Content-Type": "application/json"
         },
 
-        callback: function(response) {
+        callback: function(options, success, response) {
             console.log(response.responseText);
         }
     });
@@ -166,7 +166,7 @@ by *callback*:
             console.log("Curses, something terrible happened");
         },
 
-        callback: function(response) {
+        callback: function(options, success, response) {
             console.log("It is what it is");
         }
     });
@@ -250,8 +250,8 @@ The final thing we'll cover is uploading forms. This is also really easy:
         url: 'myUrl',
         form: 'myFormId',
 
-        callback: function(response, successful) {
-            if (successful) {
+        callback: function(options, success, response) {
+            if (success) {
                 Ext.Msg.alert('Success', 'We got your form submission');
             } else {
                 Ext.Msg.alert('Fail', 'Hmm, that did not work');

@@ -74,7 +74,7 @@ render the user's profile picture, user name and tweet message. To do this all w
 
                 reader: {
                     type: 'json',
-                    root: 'results'
+                    rootProperty: 'results'
                 }
             }
         },
@@ -112,7 +112,7 @@ But we before we add that configuration, we need to create our custom CSS. Here 
         font-weight: bold;
     }
 
-Once we have that complete, we can go back to our previous Twitter example and add the {@link Ext.dataview.DataView#baseCls basecls} configuration:
+Once we have that complete, we can go back to our previous Twitter example and add the {@link Ext.dataview.DataView#baseCls baseCls} configuration:
 
     @example
     Ext.create('Ext.DataView', {
@@ -146,7 +146,7 @@ Once we have that complete, we can go back to our previous Twitter example and a
 
 Above we created our {@link Ext.dataview.DataView DataView} with an {@link Ext.dataview.DataView#itemTpl itemTpl}, which means each item is rendered from a {@link Ext.XTemplate template}. However, sometimes you need each item to be a component so you can provide a rich UI for your users. In Sencha Touch 2, we introduced the {@link Ext.dataview.DataView#useComponents useComponents} configuration which allows you to do just that.
 
-Creating a component {@link Ext.dataview.DataView DataView} is very similiar to creating a normal template based {@link Ext.dataview.DataView DataView} like above, however you must define the item view used when rendering each item in your list.
+Creating a component {@link Ext.dataview.DataView DataView} is very similar to creating a normal template based {@link Ext.dataview.DataView DataView} like above, however you must define the item view used when rendering each item in your list.
 
     Ext.define('MyListItem', {
         extend: 'Ext.dataview.component.DataItem',
@@ -260,7 +260,7 @@ Now if we run this code together, we can see the component {@link Ext.dataview.D
         defaultType: 'mylistitem'
     });
 
-The great thing about this is the flexibilty it can add to your dataviews. Each item component has access to its own {@link Ext.dataview.component.DataItem#record record}, so you can do just about anything with it.
+The great thing about this is the flexibility it can add to your dataviews. Each item component has access to its own {@link Ext.dataview.component.DataItem#record record}, so you can do just about anything with it.
 
 Below we add a event listener to the tap event on our `nameButton`, which will then alert the user with the age of the selected person.
 

@@ -53,7 +53,7 @@ Because each build is good for a different purpose an created using a different 
     <tr>
         <th>sencha-touch.js</th>
         <td>Core</td>
-        <td>{@img tick.png}</td>
+        <td></td>
         <td>{@img tick.png}</td>
         <td></td>
         <td></td>
@@ -96,7 +96,7 @@ Note that the last 3 builds are contained within the 'builds' directory in the S
 
 <ul>
     <li><strong>Type</strong>: either "Core" or "All" - Core includes the base classes but none of the Components, All means everything is included</li>
-    <li><strong>Loader</strong>: whether dynamic loading is activated or not. Only sencha-touch.js has this activated by default</li>
+    <li><strong>Loader</strong>: whether dynamic loading is activated or not. Only sencha-touch-debug.js has this activated by default</li>
     <li><strong>Minified</strong>: means the build has been compressed with YUI compressor</li>
     <li><strong>Comments</strong>: means the build still contains the JSDoc comments (these are usually stripped in production to speed up downloads)</li>
     <li><strong>Debug</strong>: means that the build will give you debug messages such as telling you if you have misconfigured a class</li>

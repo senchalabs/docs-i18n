@@ -6,7 +6,7 @@ All of this means that people expect different app experiences on different devi
 
 ## Setting up Profiles
 
-Device Profiles exist within the context of an {@link Ext.app.Application Application}, for example if we want to create an email app with phone and tablet profiles we can define our app.js like this (see the <a href="#!/guide/apps_intro">Intro to Apps guide</a> if this is not familiar):
+Device Profiles exist within the context of an {@link Ext.app.Application Application}, for example if we want to create an email app with phone and tablet profiles we can define our app.js like this (see the [Intro to Apps guide](#!/guide/apps_intro) if this is not familiar):
 
     Ext.application({
         name: 'Mail',
@@ -31,7 +31,7 @@ We didn't give our Application a {@link Ext.app.Application#launch launch functi
 
 The Tablet profile follows the same pattern. In our Phone profile we only really supplied three pieces of information - the Profile {@link Ext.app.Profile#name name}, the optional set of additional {@link Ext.app.Profile#views views} to load if this Profile is activated, and an {@link Ext.app.Profile#isActive isActive} function.
 
-The {@link Ext.app.Profile#isActive isActive} function is what determines if a given profile should be active on the device your app happens to be booting up on. By far the most common split is to create profiles for Phone and Tablet, using the built-in Ext.os.is.Phone and Ext.os.is.Tablet properties. You can write any code you like in the isActive function so long as it always returns true or false for the device it is running on.
+The {@link Ext.app.Profile#isActive isActive} function is what determines if a given profile should be active on the device your app happens to be booting up on. By far the most common split is to create profiles for Phone and Tablet, using the built-in `Ext.os.is.Phone` and `Ext.os.is.Tablet` properties. You can write any code you like in the `isActive` function so long as it always returns `true` or `false` for the device it is running on.
 
 ## Determining the Active Profile
 
@@ -170,18 +170,18 @@ To achieve this we'd start off creating the two shared sub views - the message l
 
     Ext.define('Mail.view.MessageList', {
         extend: 'Ext.List',
-        xtype: 'messagelist',
+        xtype: 'messagelist'
 
-        //config goes here...
+        // config goes here...
     });
 
 And the Message Viewer:
 
     Ext.define('Mail.view.MessageViewer', {
         extend: 'Ext.Panel',
-        xtype: 'messageviewer',
+        xtype: 'messageviewer'
 
-        //config goes here...
+        // config goes here...
     });
 
 Now, to achieve our target layout the tablet Main view might do something like this:
@@ -267,11 +267,11 @@ Now, we know that our phone and tablet-specific controllers share most of their 
         }
     });
 
-This Controller does 3 things:
+This Controller does three things:
 
-1. Sets up {@link Ext.app.Controller#refs refs} to views that we care about
-2. Listens for the itemtap event on the message list and calls the *loadMessage* function when itemtap is fired
-3. Loads the selected message item into the Viewer when *loadMessage* is called
+1. Sets up {@link Ext.app.Controller#refs refs} to views that we care about.
+2. Listens for the `itemtap` event on the message list and calls the `loadMessage()` function when `itemtap` is fired.
+3. Loads the selected message item into the Viewer when `loadMessage()` is called
 
 Now that we have this, it's easy to create our phone-specific controller:
 
@@ -290,12 +290,12 @@ Now that we have this, it's easy to create our phone-specific controller:
         }
     });
 
-Here we're extending the Messages superclass controller and providing 2 pieces of functionality:
+Here we're extending the Messages superclass controller and providing two pieces of functionality:
 
 1. We add another ref for the phone UI's main panel
-2. We extend the loadMessage function to perform the original logic and then set the main panel's active item to the message viewer
+2. We extend the `loadMessage` function to perform the original logic and then set the main panel's active item to the message viewer.
 
-All of the configuration that was in the superclass is inherited by the subclass. In the case of duplicated configs like {@link Ext.app.Controller#refs refs}, the config is merged, so the phone Messages controller class has 3 refs - main, viewer and messageList. Just as with any other class that extends another, we can use callParent to extend an existing function in the superclass.
+All of the configuration that was in the superclass is inherited by the subclass. In the case of duplicated configs like {@link Ext.app.Controller#refs refs}, the config is merged, so the phone Messages controller class has 3 refs - main, viewer and messageList. Just as with any other class that extends another, we can use `callParent` to extend an existing function in the superclass.
 
 Bear in mind that our *Mail.controller.Messages* superclass is not declared as a dependency by either the Application or the Profile. It it automatically loaded because our *Mail.controller.phone.Messages* controller extends it.
 
