@@ -10,7 +10,17 @@
             {
                 "name": "upgrade",
                 "title": "Upgrade Guide",
-                "description": "Learn what's new in Ext JS 4.0 and how to upgrade your existing applications"
+                "description": "Learn what's new in Ext JS 4.0 and how to upgrade your existing applications."
+            },
+            {
+                "name": "upgrade_41",
+                "title": "Upgrade 4.0 to 4.1",
+                "description": "Learn what's new in Ext JS 4.1 and how to upgrade your 4.0 applications."
+            },
+            {
+                "name": "performance",
+                "title": "Performance Guide",
+                "description": "Best practices and concepts for creating performant Ext JS apps."
             }
         ]
     },
