@@ -65,7 +65,7 @@ Now that we have a {@link Ext.data.Model Model} which defines our data structure
         ]
     });
 
-And that's all there is to it.  We just created a {@link Ext.grid.Panel Grid Panel} that renders itself to the body element, and we told it to get its data from the `userStore` {@link Ext.data.Store Store} that we created earlier.  Finally we defined what columns the {@link Ext.grid.Panel Grid Panel} will have, and we used the `dataIndex` property to configure which field in the `User` {@link Ext.data.Model Model} each column will get its data from.  The `Name` column has a fixed width of 100px and has sorting and hiding disabled, the `Email Address` column is hidden by default (it can be shown again by using the menu on any other column), and the `Phone Number` column flexes to fit the remainder of the {@link Ext.grid.Panel Grid Panel}'s total width.  To view this example live, see the [Simple Grid Example](guides/grid/examples/simple_grid/index.html).
+And that's all there is to it.  We just created a {@link Ext.grid.Panel Grid Panel} that renders itself to the body element, and we told it to get its data from the `userStore` {@link Ext.data.Store Store} that we created earlier.  Finally we defined what columns the {@link Ext.grid.Panel Grid Panel} will have, and we used the `dataIndex` property to configure which field in the `User` {@link Ext.data.Model Model} each column will get its data from.  The `Name` column has a fixed width of 100px and has sorting and hiding disabled, the `Email Address` column is hidden by default (it can be shown again by using the menu on any other column), and the `Phone Number` column flexes to fit the remainder of the {@link Ext.grid.Panel Grid Panel}'s total width.  For a larger example, see the [Array Grid Example](#!/example/grid/array-grid.html).
 
 ## Renderers
 
@@ -88,7 +88,7 @@ You can use the `renderer` property of the column config to change the way data 
         }
     ]
 
-See the [Renderers Example](guides/grid/examples/renderers/index.html) for a live demo that uses custom renderers.
+See [Array Grid Example](#!/example/grid/array-grid.html) for a live demo that uses custom renderers.
 
 
 ## Grouping
@@ -112,7 +112,7 @@ For more on grouping in {@link Ext.data.Store Store}s please refer to the [Data 
         features: [{ ftype: 'grouping' }]
     });
 
-See [Grouping Grid Panel](guides/grid/examples/grouping/index.html) for a live example.
+See [Grouping Grid Panel](#!/example/grid/groupgrid.html) for a live example.
 
 
 ## Selection Models
@@ -190,7 +190,7 @@ Finally, to enable editing we need to configure the {@link Ext.grid.Panel Grid P
         ]
     });
 
-And that's all it takes to create an editable grid using cell editing. See [Cell Editing](guides/grid/examples/cell_editing) for a working example.
+And that's all it takes to create an editable grid using cell editing. See [Cell Editing](#!/example/grid/cell-editing.html) for a working example.
 
 {@img cell_editing.png Cell Editing Grid}
 
@@ -208,7 +208,7 @@ Row editing enables you to edit an entire row at a time, rather than editing cel
         ]
     });
 
-[Row Editing - Live Example](guides/grid/examples/row_editing)
+[Row Editing - Live Example](#!/example/grid/cell-editing.html)
 
 {@img row_editing.png Row Editing Grid}
 
@@ -267,7 +267,7 @@ Now that we've setup our {@link Ext.data.Store Store} to support paging, all tha
 
 {@img paging_toolbar.png Paging Toolbar}
 
-[Paging Toolbar Example](guides/grid/examples/paging_toolbar/index.html)
+[Paging Toolbar Example](#!/example/grid/paging.html)
 
 ### Paging Scroller
 
@@ -275,7 +275,7 @@ Grid supports infinite scrolling as an alternative to using a paging toolbar. Yo
 
     Ext.create('Ext.grid.Panel', {
         // Use a PagingGridScroller (this is interchangeable with a PagingToolbar)
-        verticalScrollerType: 'paginggridscroller',
+        verticalScroller: 'paginggridscroller',
         // do not reset the scrollbar when the view refreshs
         invalidateScrollerOnRefresh: false,
         // infinite scrolling does not support selection
@@ -283,4 +283,4 @@ Grid supports infinite scrolling as an alternative to using a paging toolbar. Yo
         // ...
     });
 
-[Infinite Scrolling Example](extjs/examples/grid/infinite-scroll.html)
+[Infinite Scrolling Example](#!/example/grid/infinite-scroll.html)
